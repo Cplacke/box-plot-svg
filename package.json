@@ -1,0 +1,29 @@
+{
+  "name": "@cplacke/box-plot-svg",
+  "version": "1.0.0",
+  "description": "Box and Whisker plot SVG generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cplacke/box-plot-svg.git"
+  },
+  "keywords": [
+    "box",
+    "plot",
+    "box-plot",
+    "whisker",
+    "svg",
+    "graph",
+    "quartile",
+    "range"
+  ],
+  "author": "Colin Placke",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cplacke/box-plot-svg/issues"
+  },
+  "homepage": "https://github.com/Cplacke/box-plot-svg#readme"
+}

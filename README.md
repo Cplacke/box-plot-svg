@@ -1,13 +1,14 @@
 # Box Plot SVG Graph
-This is a simple Zero dependency implementation that generates a Box and Whisker plot based on the provided data summary and rendering it in a simple interactive SVG image that can be embeded into applications, website, documents, or whatever else your need may be.
+This is a simple Zero dependency implementation that generates a Box and Whisker plot based on the provided data summary and rendering it in a simple interactive SVG image that can be embedded into applications, website, documents, or whatever else your need may be.
 
 ## Examples
 Below are a few SVG box plots that were generated from `test.spec.js` to refer to generation sample code
 
-<img style="background-color: #fff;" src="./samples/box-plot-example.svg">
-<img style="background-color: #fff;" src="./samples/box-plot-test-scores.svg">
-<img style="background-color: #fff;" src="./samples/box-plot-full-range.svg">
-<img style="background-color: #fff;" src="./samples/box-plot-min-on-top.svg">
+<div style="background-color: #fff;">
+    <img src="./samples/box-plot-example.svg">
+    <img src="./samples/box-plot-test-scores.svg">
+</div>
+
 
 ## Quick Start
 
@@ -28,7 +29,7 @@ const svg: string = createBoxPlotSVG({
 ```
 
 ### Config Object
-The default config for generating a box plot are below and can be modified to fit your needs, all units are in units of percent
+The default config for generating a box plot are below and can be modified to fit your needs, all units are in percent of total image
 
 ```js
 const defaultConfig = {
@@ -45,7 +46,6 @@ const defaultConfig = {
         box: 1.5,
         line: 1.5
     },
-
     color: {
         fill: '#ECF2F9',
         line: '#1965AE',
