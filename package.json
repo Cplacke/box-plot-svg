@@ -1,7 +1,7 @@
 {
   "name": "@cplacke/box-plot-svg",
   "version": "1.0.0",
-  "description": "Box and Whisker plot SVG generator",
+  "description": "Box and Whisker plot SVG generator, zero dependencies",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

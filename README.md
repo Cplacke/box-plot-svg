@@ -4,17 +4,17 @@ This is a simple Zero dependency implementation that generates a Box and Whisker
 ## Examples
 Below are a few SVG box plots that were generated from `test.spec.js` to refer to generation sample code
 
-<div style="background-color: #fff;">
-    <img src="./samples/box-plot-example.svg">
-    <img src="./samples/box-plot-test-scores.svg">
-</div>
+<img src="./samples/box-plot-example.svg">
+<img src="./samples/box-plot-test-scores.svg">
 
 
 ## Quick Start
 
-Simply add this package from npm 
+Simply add this package using npm or yarn
 
 > `npm i @cplacke/box-plot-svg`
+
+> `yarn add @cplacke/box-plot-svg`
 
 Then you can generate an SVG string with by importing and using the `createBoxPlotSVG` function and passing the required box-plot data and config overrides if desired
 
