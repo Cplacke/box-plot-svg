@@ -15,7 +15,6 @@ const defaultConfig = {
         box: 1.5,
         line: 1.5
     },
-
     color: {
         fill: '#ECF2F9',
         line: '#1965AE',
@@ -25,7 +24,7 @@ const defaultConfig = {
         lineHover: '#B4C9E7',
         text: '#282A2E',
     },
-    inverted: true // when true max renders at top
+    inverted: true, // when true max renders at top
 }
 
 const createBoxPlotSVG = ({

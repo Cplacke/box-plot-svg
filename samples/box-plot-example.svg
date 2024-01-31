@@ -10,31 +10,31 @@
     ,
         <line id="maxLinkLine" display="none"
             x1="12.75%" y1="2.5%" 
-            x2="30%" y2="6.3%"
+            x2="22%" y2="6.3%"
             stroke="#B4C9E7" stroke-width="1.5"
         />
     ,
         <line id="q3LinkLine" display="none"
             x1="17%" y1="40.5%" 
-            x2="30%" y2="40.5%"
+            x2="22%" y2="40.5%"
             stroke="#B4C9E7" stroke-width="1.5"
         />
     ,
         <line id="medianLinkLine" display="none"
             x1="19%" y1="50%" 
-            x2="30%" y2="50%"
+            x2="22%" y2="50%"
             stroke="#B4C9E7" stroke-width="1.5"
         />
     ,
         <line id="q1LinkLine" display="none"
             x1="17%" y1="64.25%" 
-            x2="30%" y2="64.25%"
+            x2="22%" y2="64.25%"
             stroke="#B4C9E7" stroke-width="1.5"
         />
     ,
         <line id="minLinkLine" display="none"
             x1="12.75%" y1="97.5%" 
-            x2="30%" y2="93.7%"
+            x2="22%" y2="93.7%"
             stroke="#B4C9E7" stroke-width="1.5"
         />
     ,
@@ -83,10 +83,10 @@
         />
     ,
         <rect id="maxTextBox"
-            x="30%" 
+            x="22%" 
             y="2.5%"
             rx="2"
-            width="67.5%"
+            width="75.5%"
             height="7.6%" 
             fill="#ECF2F9"
             stroke="#B4C9E7" stroke-width="0"
@@ -94,23 +94,23 @@
             onmouseleave="window.document.querySelectorAll('#max,#maxTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#maxLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
         />
             <text fill="#1965AE"
-                x="31%" 
+                x="23%" 
                 y="5.8%" font-size="2.8vh"
                 onmouseenter="window.document.querySelectorAll('#max,#maxTextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#maxLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
                 onmouseleave="window.document.querySelectorAll('#max,#maxTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#maxLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
             > Max </text>
             <text fill="#282A2E"
-                x="31%" 
+                x="23%" 
                 y="8.6%" font-size="2.8vh"
                 onmouseenter="window.document.querySelectorAll('#max,#maxTextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#maxLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
                 onmouseleave="window.document.querySelectorAll('#max,#maxTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#maxLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
             > 20 </text>
     ,
         <rect id="q3TextBox"
-            x="30%" 
+            x="22%" 
             y="36.7%"
             rx="2"
-            width="67.5%"
+            width="75.5%"
             height="7.6%" 
             fill="#ECF2F9"
             stroke="#B4C9E7" stroke-width="0"
@@ -118,23 +118,23 @@
             onmouseleave="window.document.querySelectorAll('#q3,#q3TextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#q3LinkLine').forEach((element)=>{element.setAttribute('display','none');});"
         />
             <text fill="#1965AE"
-                x="31%" 
+                x="23%" 
                 y="40%" font-size="2.8vh"
                 onmouseenter="window.document.querySelectorAll('#q3,#q3TextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#q3LinkLine').forEach((element)=>{element.setAttribute('display','1');});"
                 onmouseleave="window.document.querySelectorAll('#q3,#q3TextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#q3LinkLine').forEach((element)=>{element.setAttribute('display','none');});"
             > 75th Percentile </text>
             <text fill="#282A2E"
-                x="31%" 
+                x="23%" 
                 y="42.8%" font-size="2.8vh"
                 onmouseenter="window.document.querySelectorAll('#q3,#q3TextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#q3LinkLine').forEach((element)=>{element.setAttribute('display','1');});"
                 onmouseleave="window.document.querySelectorAll('#q3,#q3TextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#q3LinkLine').forEach((element)=>{element.setAttribute('display','none');});"
             > 17 </text>
     ,
         <rect id="q1TextBox"
-            x="30%" 
+            x="22%" 
             y="60.45%"
             rx="2"
-            width="67.5%"
+            width="75.5%"
             height="7.6%" 
             fill="#ECF2F9"
             stroke="#B4C9E7" stroke-width="0"
@@ -142,23 +142,23 @@
             onmouseleave="window.document.querySelectorAll('#q1,#q1TextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#q1LinkLine').forEach((element)=>{element.setAttribute('display','none');});"
         />
             <text fill="#1965AE"
-                x="31%" 
+                x="23%" 
                 y="63.75%" font-size="2.8vh"
                 onmouseenter="window.document.querySelectorAll('#q1,#q1TextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#q1LinkLine').forEach((element)=>{element.setAttribute('display','1');});"
                 onmouseleave="window.document.querySelectorAll('#q1,#q1TextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#q1LinkLine').forEach((element)=>{element.setAttribute('display','none');});"
             > 25th Percentile </text>
             <text fill="#282A2E"
-                x="31%" 
+                x="23%" 
                 y="66.55%" font-size="2.8vh"
                 onmouseenter="window.document.querySelectorAll('#q1,#q1TextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#q1LinkLine').forEach((element)=>{element.setAttribute('display','1');});"
                 onmouseleave="window.document.querySelectorAll('#q1,#q1TextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#q1LinkLine').forEach((element)=>{element.setAttribute('display','none');});"
             > 12 </text>
     ,
         <rect id="medianTextBox"
-            x="30%" 
+            x="22%" 
             y="46.2%"
             rx="2"
-            width="67.5%"
+            width="75.5%"
             height="7.6%" 
             fill="#ECF2F9"
             stroke="#B4C9E7" stroke-width="0"
@@ -166,23 +166,23 @@
             onmouseleave="window.document.querySelectorAll('#median,#medianTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#medianLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
         />
             <text fill="#1965AE"
-                x="31%" 
+                x="23%" 
                 y="49.5%" font-size="2.8vh"
                 onmouseenter="window.document.querySelectorAll('#median,#medianTextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#medianLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
                 onmouseleave="window.document.querySelectorAll('#median,#medianTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#medianLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
             > Median </text>
             <text fill="#282A2E"
-                x="31%" 
+                x="23%" 
                 y="52.3%" font-size="2.8vh"
                 onmouseenter="window.document.querySelectorAll('#median,#medianTextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#medianLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
                 onmouseleave="window.document.querySelectorAll('#median,#medianTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#medianLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
             > 15 </text>
     ,
         <rect id="minTextBox"
-            x="30%" 
+            x="22%" 
             y="89.9%"
             rx="2"
-            width="67.5%"
+            width="75.5%"
             height="7.6%" 
             fill="#ECF2F9"
             stroke="#B4C9E7" stroke-width="0"
@@ -190,13 +190,13 @@
             onmouseleave="window.document.querySelectorAll('#min,#minTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#minLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
         />
             <text fill="#1965AE"
-                x="31%" 
+                x="23%" 
                 y="93.2%" font-size="2.8vh"
                 onmouseenter="window.document.querySelectorAll('#min,#minTextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#minLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
                 onmouseleave="window.document.querySelectorAll('#min,#minTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#minLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
             > Min </text>
             <text fill="#282A2E"
-                x="31%" 
+                x="23%" 
                 y="96%" font-size="2.8vh"
                 onmouseenter="window.document.querySelectorAll('#min,#minTextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#minLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
                 onmouseleave="window.document.querySelectorAll('#min,#minTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#minLinkLine').forEach((element)=>{element.setAttribute('display','none');});"

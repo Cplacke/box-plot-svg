@@ -10,25 +10,25 @@
     ,
         <line id="maxLinkLine" display="none"
             x1="14.5%" y1="97.5%" 
-            x2="28.5%" y2="86.94074749999999%"
+            x2="28.5%" y2="86.65000000009499%"
             stroke="#ffaebc" stroke-width="1.5"
         />
     ,
         <line id="q3LinkLine" display="none"
-            x1="23.5%" y1="85.10492249999999%" 
-            x2="28.5%" y2="97.94074749999999%"
+            x1="23.5%" y1="84.675000000095%" 
+            x2="28.5%" y2="97.65000000009499%"
             stroke="#ffaebc" stroke-width="1.5"
         />
     ,
         <line id="medianLinkLine" display="none"
-            x1="24.5%" y1="80.51694499999999%" 
-            x2="28.5%" y2="75.94074749999999%"
+            x1="24.5%" y1="80.40000000009499%" 
+            x2="28.5%" y2="75.65000000009499%"
             stroke="#ffaebc" stroke-width="1.5"
         />
     ,
         <line id="q1LinkLine" display="none"
-            x1="23.5%" y1="75.94074749999999%" 
-            x2="28.5%" y2="64.94074749999999%"
+            x1="23.5%" y1="75.65000000009499%" 
+            x2="28.5%" y2="64.65000000009499%"
             stroke="#ffaebc" stroke-width="1.5"
         />
     ,
@@ -39,9 +39,9 @@
         />
     ,
         <rect id="q3"
-            height="9.175954999999988%" width="20%"
+            height="8.550000000000011%" width="20%"
             x="3.5%" 
-            y="80.51694499999999%"
+            y="80.40000000009499%"
             fill="#b4f8c8"
             stroke="#a0e7e5" stroke-width="2"
             onmouseenter="window.document.querySelectorAll('#q3,#q3TextBox').forEach((element)=>{element.setAttribute('fill','#80c7e5');});window.document.querySelectorAll('#q3LinkLine').forEach((element)=>{element.setAttribute('display','1');});"
@@ -49,9 +49,9 @@
         />
     ,
         <rect id="q1"
-            height="9.152394999999999%" width="20%"
+            height="9.499999999999986%" width="20%"
             x="3.5%" 
-            y="71.36455%"
+            y="70.900000000095%"
             fill="#b4f8c8"
             stroke="#a0e7e5" stroke-width="2"
             onmouseenter="window.document.querySelectorAll('#q1,#q1TextBox').forEach((element)=>{element.setAttribute('fill','#80c7e5');});window.document.querySelectorAll('#q1LinkLine').forEach((element)=>{element.setAttribute('display','1');});"
@@ -59,8 +59,8 @@
         />
     ,
         <line id="median"
-            x1="2.5%" y1="80.51694499999999%" 
-            x2="24.5%" y2="80.51694499999999%"
+            x1="2.5%" y1="80.40000000009499%" 
+            x2="24.5%" y2="80.40000000009499%"
             stroke="#a0e7e5" stroke-width="2.25"
             onmouseenter="window.document.querySelectorAll('#median,#medianTextBox').forEach((element)=>{element.setAttribute('fill','#80c7e5');});window.document.querySelectorAll('#medianLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
             onmouseleave="window.document.querySelectorAll('#median,#medianTextBox').forEach((element)=>{element.setAttribute('fill','#b4f8c8');});window.document.querySelectorAll('#medianLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
@@ -84,7 +84,7 @@
     ,
         <rect id="maxTextBox"
             x="28.5%" 
-            y="81.44074749999999%"
+            y="81.15000000009499%"
             rx="2"
             width="69%"
             height="11%" 
@@ -95,20 +95,20 @@
         />
             <text fill="#ffaebc"
                 x="30%" 
-                y="86.19074749999999%" font-size="4vh"
+                y="85.90000000009499%" font-size="4vh"
                 onmouseenter="window.document.querySelectorAll('#max,#maxTextBox').forEach((element)=>{element.setAttribute('fill','#80c7e5');});window.document.querySelectorAll('#maxLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
                 onmouseleave="window.document.querySelectorAll('#max,#maxTextBox').forEach((element)=>{element.setAttribute('fill','#b4f8c8');});window.document.querySelectorAll('#maxLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
             > Max </text>
             <text fill="#223232"
                 x="30%" 
-                y="90.19074749999999%" font-size="4vh"
+                y="89.90000000009499%" font-size="4vh"
                 onmouseenter="window.document.querySelectorAll('#max,#maxTextBox').forEach((element)=>{element.setAttribute('fill','#80c7e5');});window.document.querySelectorAll('#maxLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
                 onmouseleave="window.document.querySelectorAll('#max,#maxTextBox').forEach((element)=>{element.setAttribute('fill','#b4f8c8');});window.document.querySelectorAll('#maxLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
             > 100 </text>
     ,
         <rect id="q3TextBox"
             x="28.5%" 
-            y="92.44074749999999%"
+            y="92.15000000009499%"
             rx="2"
             width="69%"
             height="11%" 
@@ -119,20 +119,20 @@
         />
             <text fill="#ffaebc"
                 x="30%" 
-                y="97.19074749999999%" font-size="4vh"
+                y="96.90000000009499%" font-size="4vh"
                 onmouseenter="window.document.querySelectorAll('#q3,#q3TextBox').forEach((element)=>{element.setAttribute('fill','#80c7e5');});window.document.querySelectorAll('#q3LinkLine').forEach((element)=>{element.setAttribute('display','1');});"
                 onmouseleave="window.document.querySelectorAll('#q3,#q3TextBox').forEach((element)=>{element.setAttribute('fill','#b4f8c8');});window.document.querySelectorAll('#q3LinkLine').forEach((element)=>{element.setAttribute('display','none');});"
             > 75th Percentile </text>
             <text fill="#223232"
                 x="30%" 
-                y="101.19074749999999%" font-size="4vh"
+                y="100.90000000009499%" font-size="4vh"
                 onmouseenter="window.document.querySelectorAll('#q3,#q3TextBox').forEach((element)=>{element.setAttribute('fill','#80c7e5');});window.document.querySelectorAll('#q3LinkLine').forEach((element)=>{element.setAttribute('display','1');});"
                 onmouseleave="window.document.querySelectorAll('#q3,#q3TextBox').forEach((element)=>{element.setAttribute('fill','#b4f8c8');});window.document.querySelectorAll('#q3LinkLine').forEach((element)=>{element.setAttribute('display','none');});"
-            > 91.782 </text>
+            > 91.0000000001 </text>
     ,
         <rect id="q1TextBox"
             x="28.5%" 
-            y="59.440747499999986%"
+            y="59.15000000009499%"
             rx="2"
             width="69%"
             height="11%" 
@@ -143,20 +143,20 @@
         />
             <text fill="#ffaebc"
                 x="30%" 
-                y="64.19074749999999%" font-size="4vh"
+                y="63.90000000009499%" font-size="4vh"
                 onmouseenter="window.document.querySelectorAll('#q1,#q1TextBox').forEach((element)=>{element.setAttribute('fill','#80c7e5');});window.document.querySelectorAll('#q1LinkLine').forEach((element)=>{element.setAttribute('display','1');});"
                 onmouseleave="window.document.querySelectorAll('#q1,#q1TextBox').forEach((element)=>{element.setAttribute('fill','#b4f8c8');});window.document.querySelectorAll('#q1LinkLine').forEach((element)=>{element.setAttribute('display','none');});"
             > 25th Percentile </text>
             <text fill="#223232"
                 x="30%" 
-                y="68.19074749999999%" font-size="4vh"
+                y="67.90000000009499%" font-size="4vh"
                 onmouseenter="window.document.querySelectorAll('#q1,#q1TextBox').forEach((element)=>{element.setAttribute('fill','#80c7e5');});window.document.querySelectorAll('#q1LinkLine').forEach((element)=>{element.setAttribute('display','1');});"
                 onmouseleave="window.document.querySelectorAll('#q1,#q1TextBox').forEach((element)=>{element.setAttribute('fill','#b4f8c8');});window.document.querySelectorAll('#q1LinkLine').forEach((element)=>{element.setAttribute('display','none');});"
-            > 72.489 </text>
+            > 72.0000000001 </text>
     ,
         <rect id="medianTextBox"
             x="28.5%" 
-            y="70.44074749999999%"
+            y="70.15000000009499%"
             rx="2"
             width="69%"
             height="11%" 
@@ -167,16 +167,16 @@
         />
             <text fill="#ffaebc"
                 x="30%" 
-                y="75.19074749999999%" font-size="4vh"
+                y="74.90000000009499%" font-size="4vh"
                 onmouseenter="window.document.querySelectorAll('#median,#medianTextBox').forEach((element)=>{element.setAttribute('fill','#80c7e5');});window.document.querySelectorAll('#medianLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
                 onmouseleave="window.document.querySelectorAll('#median,#medianTextBox').forEach((element)=>{element.setAttribute('fill','#b4f8c8');});window.document.querySelectorAll('#medianLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
             > Median </text>
             <text fill="#223232"
                 x="30%" 
-                y="79.19074749999999%" font-size="4vh"
+                y="78.90000000009499%" font-size="4vh"
                 onmouseenter="window.document.querySelectorAll('#median,#medianTextBox').forEach((element)=>{element.setAttribute('fill','#80c7e5');});window.document.querySelectorAll('#medianLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
                 onmouseleave="window.document.querySelectorAll('#median,#medianTextBox').forEach((element)=>{element.setAttribute('fill','#b4f8c8');});window.document.querySelectorAll('#medianLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
-            > 82.1231 </text>
+            > 82.0000000001 </text>
     ,
         <rect id="minTextBox"
             x="28.5%" 

@@ -288,9 +288,9 @@ const getPlotAttributes = ({
 const getLabelAttributes = ({
     q1, q3, median, max, min
 }, plotConfig) => {
-    const textContainerX = plotConfig.padding*7 + plotConfig.boxWidth;
+    const textContainerX = plotConfig.padding*3 + plotConfig.boxWidth + plotConfig.boxInset;
     const textBoxHeight = plotConfig.text.size*2+plotConfig.text.padding*2;
-    const textContainerWidth = 100 - plotConfig.padding*8 - plotConfig.boxWidth;
+    const textContainerWidth = 100 - plotConfig.padding*4 - plotConfig.boxWidth - plotConfig.boxInset;
     const labelConfig = {
         min: { y: undefined, textY: undefined },
         max: { y: undefined, textY: undefined },
