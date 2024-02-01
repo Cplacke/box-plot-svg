@@ -1,5 +1,5 @@
 const { createBoxPlotSvgElements } = require('./src/graph')
-const { onLoadPositionLabels } = require('./src/utils')
+const { onLoadPositionLabels } = require('./src/events')
 
 // grid config settings
 const defaultConfig = {
@@ -28,10 +28,6 @@ const defaultConfig = {
     },
     inverted: true, // when true max renders at top
 }
-
-const onload = () => (`
-    console.log('loaded SVG image ....')
-`)
 
 const createBoxPlotSVG = ({
     min, max, q1, median, q3,

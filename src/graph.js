@@ -1,4 +1,5 @@
 const { percentage, invert, scaleUnit } = require('./utils');
+const { highlightOnMouseOver, highlightOnMouseLeave } = require('./events');
 
 const createBoxPlotSvgElements = ({
     min, max, median, q1, q3
@@ -332,31 +333,6 @@ const getLabelAttributes = ({
 
     // console.debug(labelConfig);
     return labelConfig;
-}
-
-const highlightOnMouseOver = (fillTags, showTags, plotConfig) => { 
-    return `
-        window.document.querySelectorAll('${fillTags.join(',')}')
-            .forEach((element) => {
-                element.setAttribute('fill', '${plotConfig.color.fillHover}');
-            });
-        window.document.querySelectorAll('${showTags.join(',')}')
-            .forEach((element) => {
-                element.setAttribute('display', '1');
-            });
-    `.replace(/\s*/g, '');
-}
-const highlightOnMouseLeave = (fillTags, showTags, plotConfig) => {
-    return `
-        window.document.querySelectorAll('${fillTags.join(',')}')
-            .forEach((element) => {
-                element.setAttribute('fill', '${plotConfig.color.fill}');
-            });
-        window.document.querySelectorAll('${showTags.join(',')}')
-            .forEach((element) => {
-                element.setAttribute('display', 'none');
-            });
-    `.replace(/\s*/g, '');
 }
 
 module.exports = {
