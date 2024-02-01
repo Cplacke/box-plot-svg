@@ -33,12 +33,12 @@ The default config for generating a box plot are below and can be modified to fi
 
 ```js
 const defaultConfig = {
-    padding: 2.5,
-    boxWidth: 12.5,
-    boxInset: 2,
+    padding: 2.5, // percentage
+    boxWidth: 12.5, // percentage
+    boxInset: 2, // percentage
     text: {
-        size: 2.8,
-        padding: 1,
+        size: 12, // pixels
+        padding: 1, // pixels
         radius: 2,
         font: 'OptumSans, helvetica, sans-serif, monospace',
     },

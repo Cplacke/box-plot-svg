@@ -1,6 +1,67 @@
 
-        <svg viewBox="100% 100%" xmlns="http://www.w3.org/2000/svg" 
-            style="background-color: transparent; font-family: OptumSans, helvetica, sans-serif, monospace"
+        <svg id="boxPlot" viewBox="100% 100%" xmlns="http://www.w3.org/2000/svg" 
+            style="background-color: transparent; font-family: OptumSans, helvetica, sans-serif, monospace; "
+            onload="
+    var boxPlotSVG = window.document.querySelector('#boxPlot');
+    var labelSVGs = window.document.querySelectorAll('.label-box');
+
+    var labelBoxPercentage = (labelSVGs[0].children[0].height.baseVal.value/boxPlotSVG.getBBox().height)*100;
+
+    if (true == true) {
+        window.document.querySelector('#maxLabelSvg').setAttribute('y', 2.5+'%');
+        window.document.querySelector('#minLabelSvg').setAttribute('y', 100-2.5-labelBoxPercentage+'%');
+    } else {
+        window.document.querySelector('#maxLabelSvg').setAttribute('y', 100-2.5-labelBoxPercentage+'%');
+        window.document.querySelector('#minLabelSvg').setAttribute('y', 2.5+'%');
+    }
+
+    var values = [];
+    labelSVGs.forEach((element) => {
+        values.push({ 
+            id: element.id, 
+            y: Number(element.getAttribute('y').toString().replace('%', ''))
+        });
+    });
+
+    values.forEach((ele) => {
+        if (!/min|max/.test(ele.id)) {
+            ele.y = ele.y - (0.5*labelBoxPercentage);
+        }
+    });
+    
+    values.sort((a, b) => (a.y - b.y));
+    values.forEach((curr, i) => {
+        if (i &lt; values.length-2) {
+            const next = values[i+1];
+
+            if (curr.y+labelBoxPercentage &gt; next.y &amp;&amp; !/min|max/.test(next.id)) {
+                console.info(i, 'end: ', curr.y+labelBoxPercentage, '; next:', next.y);
+                next.y = curr.y+labelBoxPercentage;
+            }
+        }
+    });
+    console.info(values);
+
+    
+    values.sort((a, b) => (b.y - a.y));
+    values.forEach((curr, i) => {
+        if (i &lt; values.length-2) {
+            const next = values[i+1];
+            if (next.y+labelBoxPercentage &gt; curr.y &amp;&amp; !/min|max/.test(next.id)) {
+                next.y = curr.y-labelBoxPercentage;
+                console.info('SHFIT SFHIT');
+            }
+        }
+    });
+
+    values.forEach((shiftedValue) => {
+        const { id, y } = shiftedValue;
+        console.info(id, y);
+        window.document.querySelector('#'+id).setAttribute('y', y+'%');
+        window.document.querySelector('#'+id.replace('LabelSvg', 'LinkLine')).setAttribute('y2', y+(0.5*labelBoxPercentage)+'%');
+    });
+    console.info(values);
+"
         >
         <line id="center-line"
             x1="10.75%" y1="2.5%" 
@@ -8,33 +69,33 @@
             stroke="#1965AE" stroke-width="1.5"
         />
     ,
-        <line id="maxLinkLine" display="none"
+        <line id="maxLinkLine" display="none" class="link-link"
             x1="12.75%" y1="2.5%" 
-            x2="22%" y2="6.3%"
+            x2="22%" y2="3.5%"
             stroke="#B4C9E7" stroke-width="1.5"
         />
     ,
-        <line id="q3LinkLine" display="none"
+        <line id="q3LinkLine" display="none" class="link-link"
             x1="17%" y1="14.895077500000014%" 
-            x2="22%" y2="14.895077500000014%"
+            x2="22%" y2="15.895077500000014%"
             stroke="#B4C9E7" stroke-width="1.5"
         />
     ,
-        <line id="medianLinkLine" display="none"
+        <line id="medianLinkLine" display="none" class="link-link"
             x1="19%" y1="19.483055000000007%" 
-            x2="22%" y2="22.49507750000001%"
+            x2="22%" y2="20.483055000000007%"
             stroke="#B4C9E7" stroke-width="1.5"
         />
     ,
-        <line id="q1LinkLine" display="none"
+        <line id="q1LinkLine" display="none" class="link-link"
             x1="17%" y1="24.059252500000007%" 
-            x2="22%" y2="30.095077500000013%"
+            x2="22%" y2="25.059252500000007%"
             stroke="#B4C9E7" stroke-width="1.5"
         />
     ,
-        <line id="minLinkLine" display="none"
+        <line id="minLinkLine" display="none" class="link-link"
             x1="12.75%" y1="97.5%" 
-            x2="22%" y2="93.7%"
+            x2="22%" y2="98.5%"
             stroke="#B4C9E7" stroke-width="1.5"
         />
     ,
@@ -82,124 +143,139 @@
             onmouseleave="window.document.querySelectorAll('#min,#minTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#minLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
         />
     ,
-        <rect id="maxTextBox"
+        <svg class="label-box" id="maxLabelSvg"
             x="22%" 
             y="2.5%"
-            rx="2"
-            width="75.5%"
-            height="7.6%" 
-            fill="#ECF2F9"
-            stroke="#B4C9E7" stroke-width="0"
-            onmouseenter="window.document.querySelectorAll('#max,#maxTextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#maxLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
-            onmouseleave="window.document.querySelectorAll('#max,#maxTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#maxLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
-        />
-            <text fill="#1965AE"
-                x="23%" 
-                y="5.8%" font-size="2.8vh"
+        >
+            <rect id="maxTextBox"
+                rx="2"
+                width="75.5%"
+                height="50px" 
+                fill="#ECF2F9"
+                stroke="#B4C9E7" stroke-width="0"
                 onmouseenter="window.document.querySelectorAll('#max,#maxTextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#maxLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
                 onmouseleave="window.document.querySelectorAll('#max,#maxTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#maxLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
-            > Max </text>
-            <text fill="#282A2E"
-                x="23%" 
-                y="8.6%" font-size="2.8vh"
-                onmouseenter="window.document.querySelectorAll('#max,#maxTextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#maxLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
-                onmouseleave="window.document.querySelectorAll('#max,#maxTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#maxLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
-            > 100 </text>
+            />
+                <text fill="#1965AE"
+                    x="5px" 
+                    y="22.5px" font-size="20px"
+                    onmouseenter="window.document.querySelectorAll('#max,#maxTextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#maxLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
+                    onmouseleave="window.document.querySelectorAll('#max,#maxTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#maxLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
+                > Max </text>
+                <text fill="#282A2E"
+                x="5px" 
+                y="42.5px" font-size="20px"
+                    onmouseenter="window.document.querySelectorAll('#max,#maxTextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#maxLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
+                    onmouseleave="window.document.querySelectorAll('#max,#maxTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#maxLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
+                > 100 </text>
+        </svg>
     ,
-        <rect id="q3TextBox"
+        <svg class="label-box" id="q3LabelSvg"
             x="22%" 
-            y="11.095077500000013%"
-            rx="2"
-            width="75.5%"
-            height="7.6%" 
-            fill="#ECF2F9"
-            stroke="#B4C9E7" stroke-width="0"
-            onmouseenter="window.document.querySelectorAll('#q3,#q3TextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#q3LinkLine').forEach((element)=>{element.setAttribute('display','1');});"
-            onmouseleave="window.document.querySelectorAll('#q3,#q3TextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#q3LinkLine').forEach((element)=>{element.setAttribute('display','none');});"
-        />
-            <text fill="#1965AE"
-                x="23%" 
-                y="14.395077500000014%" font-size="2.8vh"
+            y="14.895077500000014%"
+        >
+            <rect id="q3TextBox"
+                rx="2"
+                width="75.5%"
+                height="50px" 
+                fill="#ECF2F9"
+                stroke="#B4C9E7" stroke-width="0"
                 onmouseenter="window.document.querySelectorAll('#q3,#q3TextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#q3LinkLine').forEach((element)=>{element.setAttribute('display','1');});"
                 onmouseleave="window.document.querySelectorAll('#q3,#q3TextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#q3LinkLine').forEach((element)=>{element.setAttribute('display','none');});"
-            > 75th Percentile </text>
-            <text fill="#282A2E"
-                x="23%" 
-                y="17.195077500000014%" font-size="2.8vh"
-                onmouseenter="window.document.querySelectorAll('#q3,#q3TextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#q3LinkLine').forEach((element)=>{element.setAttribute('display','1');});"
-                onmouseleave="window.document.querySelectorAll('#q3,#q3TextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#q3LinkLine').forEach((element)=>{element.setAttribute('display','none');});"
-            > 91.782 </text>
+            />
+                <text fill="#1965AE"
+                    x="5px" 
+                    y="22.5px" font-size="20px"
+                    onmouseenter="window.document.querySelectorAll('#q3,#q3TextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#q3LinkLine').forEach((element)=>{element.setAttribute('display','1');});"
+                    onmouseleave="window.document.querySelectorAll('#q3,#q3TextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#q3LinkLine').forEach((element)=>{element.setAttribute('display','none');});"
+                > 75th Percentile </text>
+                <text fill="#282A2E"
+                    x="5px" 
+                    y="42.5px" font-size="20px"
+                    onmouseenter="window.document.querySelectorAll('#q3,#q3TextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#q3LinkLine').forEach((element)=>{element.setAttribute('display','1');});"
+                    onmouseleave="window.document.querySelectorAll('#q3,#q3TextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#q3LinkLine').forEach((element)=>{element.setAttribute('display','none');});"
+                > 91.782 </text>
+        </svg>
     ,
-        <rect id="q1TextBox"
+        <svg class="label-box" id="q1LabelSvg"
             x="22%" 
-            y="26.295077500000012%"
-            rx="2"
-            width="75.5%"
-            height="7.6%" 
-            fill="#ECF2F9"
-            stroke="#B4C9E7" stroke-width="0"
-            onmouseenter="window.document.querySelectorAll('#q1,#q1TextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#q1LinkLine').forEach((element)=>{element.setAttribute('display','1');});"
-            onmouseleave="window.document.querySelectorAll('#q1,#q1TextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#q1LinkLine').forEach((element)=>{element.setAttribute('display','none');});"
-        />
-            <text fill="#1965AE"
-                x="23%" 
-                y="29.595077500000013%" font-size="2.8vh"
+            y="24.059252500000007%"
+        >
+            <rect id="q1TextBox"
+                rx="2"
+                width="75.5%"
+                height="50px" 
+                fill="#ECF2F9"
+                stroke="#B4C9E7" stroke-width="0"
                 onmouseenter="window.document.querySelectorAll('#q1,#q1TextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#q1LinkLine').forEach((element)=>{element.setAttribute('display','1');});"
                 onmouseleave="window.document.querySelectorAll('#q1,#q1TextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#q1LinkLine').forEach((element)=>{element.setAttribute('display','none');});"
-            > 25th Percentile </text>
-            <text fill="#282A2E"
-                x="23%" 
-                y="32.39507750000001%" font-size="2.8vh"
-                onmouseenter="window.document.querySelectorAll('#q1,#q1TextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#q1LinkLine').forEach((element)=>{element.setAttribute('display','1');});"
-                onmouseleave="window.document.querySelectorAll('#q1,#q1TextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#q1LinkLine').forEach((element)=>{element.setAttribute('display','none');});"
-            > 72.489 </text>
+            />
+                <text fill="#1965AE"
+                    x="5px" 
+                    y="22.5px" font-size="20px"
+                    onmouseenter="window.document.querySelectorAll('#q1,#q1TextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#q1LinkLine').forEach((element)=>{element.setAttribute('display','1');});"
+                    onmouseleave="window.document.querySelectorAll('#q1,#q1TextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#q1LinkLine').forEach((element)=>{element.setAttribute('display','none');});"
+                > 25th Percentile </text>
+                <text fill="#282A2E"
+                    x="5px" 
+                    y="42.5px" font-size="20px"
+                    onmouseenter="window.document.querySelectorAll('#q1,#q1TextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#q1LinkLine').forEach((element)=>{element.setAttribute('display','1');});"
+                    onmouseleave="window.document.querySelectorAll('#q1,#q1TextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#q1LinkLine').forEach((element)=>{element.setAttribute('display','none');});"
+                > 72.489 </text>
+        </svg>
     ,
-        <rect id="medianTextBox"
+        <svg class="label-box" id="medianLabelSvg"
             x="22%" 
-            y="18.69507750000001%"
-            rx="2"
-            width="75.5%"
-            height="7.6%" 
-            fill="#ECF2F9"
-            stroke="#B4C9E7" stroke-width="0"
-            onmouseenter="window.document.querySelectorAll('#median,#medianTextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#medianLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
-            onmouseleave="window.document.querySelectorAll('#median,#medianTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#medianLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
-        />
-            <text fill="#1965AE"
-                x="23%" 
-                y="21.99507750000001%" font-size="2.8vh"
+            y="19.483055000000007%"
+        >
+            <rect id="medianTextBox"
+                rx="2"
+                width="75.5%"
+                height="50px" 
+                fill="#ECF2F9"
+                stroke="#B4C9E7" stroke-width="0"
                 onmouseenter="window.document.querySelectorAll('#median,#medianTextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#medianLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
                 onmouseleave="window.document.querySelectorAll('#median,#medianTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#medianLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
-            > Median </text>
-            <text fill="#282A2E"
-                x="23%" 
-                y="24.795077500000012%" font-size="2.8vh"
-                onmouseenter="window.document.querySelectorAll('#median,#medianTextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#medianLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
-                onmouseleave="window.document.querySelectorAll('#median,#medianTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#medianLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
-            > 82.1231 </text>
+            />
+                <text fill="#1965AE"
+                    x="5px" 
+                    y="22.5px" font-size="20px"
+                    onmouseenter="window.document.querySelectorAll('#median,#medianTextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#medianLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
+                    onmouseleave="window.document.querySelectorAll('#median,#medianTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#medianLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
+                > Median </text>
+                <text fill="#282A2E"
+                    x="5px" 
+                    y="42.5px" font-size="20px"
+                    onmouseenter="window.document.querySelectorAll('#median,#medianTextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#medianLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
+                    onmouseleave="window.document.querySelectorAll('#median,#medianTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#medianLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
+                > 82.1231 </text>
+        </svg>
     ,
-        <rect id="minTextBox"
+        <svg class="label-box" id="minLabelSvg"
             x="22%" 
-            y="89.9%"
-            rx="2"
-            width="75.5%"
-            height="7.6%" 
-            fill="#ECF2F9"
-            stroke="#B4C9E7" stroke-width="0"
-            onmouseenter="window.document.querySelectorAll('#min,#minTextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#minLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
-            onmouseleave="window.document.querySelectorAll('#min,#minTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#minLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
-        />
-            <text fill="#1965AE"
-                x="23%" 
-                y="93.2%" font-size="2.8vh"
+            y="97.5%"
+        >
+            <rect id="minTextBox"
+                rx="2"
+                width="75.5%"
+                height="50px" 
+                fill="#ECF2F9"
+                stroke="#B4C9E7" stroke-width="0"
                 onmouseenter="window.document.querySelectorAll('#min,#minTextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#minLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
                 onmouseleave="window.document.querySelectorAll('#min,#minTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#minLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
-            > Min </text>
-            <text fill="#282A2E"
-                x="23%" 
-                y="96%" font-size="2.8vh"
-                onmouseenter="window.document.querySelectorAll('#min,#minTextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#minLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
-                onmouseleave="window.document.querySelectorAll('#min,#minTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#minLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
-            > 0 </text>
+            />
+                <text fill="#1965AE"
+                    x="5px" 
+                    y="22.5px" font-size="20px"
+                    onmouseenter="window.document.querySelectorAll('#min,#minTextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#minLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
+                    onmouseleave="window.document.querySelectorAll('#min,#minTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#minLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
+                > Min </text>
+                <text fill="#282A2E"
+                    x="5px" 
+                    y="42.5px" font-size="20px"
+                    onmouseenter="window.document.querySelectorAll('#min,#minTextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#minLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
+                    onmouseleave="window.document.querySelectorAll('#min,#minTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#minLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
+                > 0 </text>
+        </svg>
     </svg>
     

@@ -19,38 +19,38 @@ const createBoxPlotSvgElements = ({
 
     // link lines on hover state
     plotElements.push(`
-        <line id="maxLinkLine" display="none"
+        <line id="maxLinkLine" display="none" class="link-link"
             x1="${boxPlotCenterX+plotConfig.boxInset}%" y1="${plotAttributes.max.y}%" 
-            x2="${labelAttributes.textContainerX}%" y2="${labelAttributes.max.y+(0.5*labelAttributes.textBoxHeight)}%"
+            x2="${labelAttributes.textContainerX}%" y2="${labelAttributes.max.y+1}%"
             stroke="${plotConfig.color.lineHover}" stroke-width="${plotConfig.stroke.line}"
         />
     `)
     plotElements.push(`
-        <line id="q3LinkLine" display="none"
+        <line id="q3LinkLine" display="none" class="link-link"
             x1="${boxPlotCenterX+(0.5*plotConfig.boxWidth)}%" y1="${plotAttributes.q3.y+(0.5*plotAttributes.q3.h)}%" 
-            x2="${labelAttributes.textContainerX}%" y2="${labelAttributes.q3.y+(0.5*labelAttributes.textBoxHeight)}%"
+            x2="${labelAttributes.textContainerX}%" y2="${labelAttributes.q3.y+1}%"
             stroke="${plotConfig.color.lineHover}" stroke-width="${plotConfig.stroke.line}"
         />
     `)
 
     plotElements.push(`
-        <line id="medianLinkLine" display="none"
+        <line id="medianLinkLine" display="none" class="link-link"
             x1="${boxPlotCenterX+(0.5*plotConfig.boxWidth)+plotConfig.boxInset}%" y1="${plotAttributes.median.y}%" 
-            x2="${labelAttributes.textContainerX}%" y2="${labelAttributes.median.y+(0.5*labelAttributes.textBoxHeight)}%"
+            x2="${labelAttributes.textContainerX}%" y2="${labelAttributes.median.y+1}%"
             stroke="${plotConfig.color.lineHover}" stroke-width="${plotConfig.stroke.line}"
         />
     `)
     plotElements.push(`
-        <line id="q1LinkLine" display="none"
+        <line id="q1LinkLine" display="none" class="link-link"
             x1="${boxPlotCenterX+(0.5*plotConfig.boxWidth)}%" y1="${plotAttributes.q1.y+(0.5*plotAttributes.q1.h)}%" 
-            x2="${labelAttributes.textContainerX}%" y2="${labelAttributes.q1.y+(0.5*labelAttributes.textBoxHeight)}%"
+            x2="${labelAttributes.textContainerX}%" y2="${labelAttributes.q1.y+1}%"
             stroke="${plotConfig.color.lineHover}" stroke-width="${plotConfig.stroke.line}"
         />
     `)
     plotElements.push(`
-        <line id="minLinkLine" display="none"
+        <line id="minLinkLine" display="none" class="link-link"
             x1="${boxPlotCenterX+plotConfig.boxInset}%" y1="${plotAttributes.min.y}%" 
-            x2="${labelAttributes.textContainerX}%" y2="${labelAttributes.min.y+(0.5*labelAttributes.textBoxHeight)}%"
+            x2="${labelAttributes.textContainerX}%" y2="${labelAttributes.min.y+1}%"
             stroke="${plotConfig.color.lineHover}" stroke-width="${plotConfig.stroke.line}"
         />
     `)
@@ -108,130 +108,145 @@ const createBoxPlotSvgElements = ({
     
     // Labels and annotations 
     plotElements.push(`
-        <rect id="maxTextBox"
+        <svg class="label-box" id="maxLabelSvg"
             x="${labelAttributes.textContainerX}%" 
             y="${labelAttributes.max.y}%"
-            rx="${plotConfig.text.radius}"
-            width="${labelAttributes.textContainerWidth}%"
-            height="${plotConfig.text.size*2+plotConfig.text.padding*2}%" 
-            fill="${plotConfig.color.fill}"
-            stroke="${plotConfig.color.border}" stroke-width="${0}"
-            onmouseenter="${highlightOnMouseOver(['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
-            onmouseleave="${highlightOnMouseLeave(['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
-        />
-            <text fill="${plotConfig.color.label}"
-                x="${labelAttributes.textContainerX+plotConfig.text.padding}%" 
-                y="${labelAttributes.max.textY}%" font-size="${plotConfig.text.size}vh"
+        >
+            <rect id="maxTextBox"
+                rx="${plotConfig.text.radius}"
+                width="${labelAttributes.textContainerWidth}%"
+                height="${labelAttributes.textBoxHeight}px" 
+                fill="${plotConfig.color.fill}"
+                stroke="${plotConfig.color.border}" stroke-width="${0}"
                 onmouseenter="${highlightOnMouseOver(['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
                 onmouseleave="${highlightOnMouseLeave(['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
-            > Max </text>
-            <text fill="${plotConfig.color.text}"
-                x="${labelAttributes.textContainerX+plotConfig.text.padding}%" 
-                y="${labelAttributes.max.textY+plotConfig.text.size}%" font-size="${plotConfig.text.size}vh"
-                onmouseenter="${highlightOnMouseOver(['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
-                onmouseleave="${highlightOnMouseLeave(['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
-            > ${max} </text>
+            />
+                <text fill="${plotConfig.color.label}"
+                    x="${plotConfig.text.padding}px" 
+                    y="${labelAttributes.textLabelY}px" font-size="${plotConfig.text.size}px"
+                    onmouseenter="${highlightOnMouseOver(['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
+                    onmouseleave="${highlightOnMouseLeave(['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
+                > Max </text>
+                <text fill="${plotConfig.color.text}"
+                x="${plotConfig.text.padding}px" 
+                y="${labelAttributes.textValueY}px" font-size="${plotConfig.text.size}px"
+                    onmouseenter="${highlightOnMouseOver(['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
+                    onmouseleave="${highlightOnMouseLeave(['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
+                > ${max} </text>
+        </svg>
     `);
 
     plotElements.push(`
-        <rect id="q3TextBox"
+        <svg class="label-box" id="q3LabelSvg"
             x="${labelAttributes.textContainerX}%" 
             y="${labelAttributes.q3.y}%"
-            rx="${plotConfig.text.radius}"
-            width="${labelAttributes.textContainerWidth}%"
-            height="${plotConfig.text.size*2+plotConfig.text.padding*2}%" 
-            fill="${plotConfig.color.fill}"
-            stroke="${plotConfig.color.border}" stroke-width="${0}"
-            onmouseenter="${highlightOnMouseOver(['#q3', '#q3TextBox'], ['#q3LinkLine'], plotConfig)}"
-            onmouseleave="${highlightOnMouseLeave(['#q3', '#q3TextBox'], ['#q3LinkLine'], plotConfig)}"
-        />
-            <text fill="${plotConfig.color.label}"
-                x="${labelAttributes.textContainerX+plotConfig.text.padding}%" 
-                y="${labelAttributes.q3.textY}%" font-size="${plotConfig.text.size}vh"
+        >
+            <rect id="q3TextBox"
+                rx="${plotConfig.text.radius}"
+                width="${labelAttributes.textContainerWidth}%"
+                height="${labelAttributes.textBoxHeight}px" 
+                fill="${plotConfig.color.fill}"
+                stroke="${plotConfig.color.border}" stroke-width="${0}"
                 onmouseenter="${highlightOnMouseOver(['#q3', '#q3TextBox'], ['#q3LinkLine'], plotConfig)}"
                 onmouseleave="${highlightOnMouseLeave(['#q3', '#q3TextBox'], ['#q3LinkLine'], plotConfig)}"
-            > 75th Percentile </text>
-            <text fill="${plotConfig.color.text}"
-                x="${labelAttributes.textContainerX+plotConfig.text.padding}%" 
-                y="${labelAttributes.q3.textY+plotConfig.text.size}%" font-size="${plotConfig.text.size}vh"
-                onmouseenter="${highlightOnMouseOver(['#q3', '#q3TextBox'], ['#q3LinkLine'], plotConfig)}"
-                onmouseleave="${highlightOnMouseLeave(['#q3', '#q3TextBox'], ['#q3LinkLine'], plotConfig)}"
-            > ${q3} </text>
+            />
+                <text fill="${plotConfig.color.label}"
+                    x="${plotConfig.text.padding}px" 
+                    y="${labelAttributes.textLabelY}px" font-size="${plotConfig.text.size}px"
+                    onmouseenter="${highlightOnMouseOver(['#q3', '#q3TextBox'], ['#q3LinkLine'], plotConfig)}"
+                    onmouseleave="${highlightOnMouseLeave(['#q3', '#q3TextBox'], ['#q3LinkLine'], plotConfig)}"
+                > 75th Percentile </text>
+                <text fill="${plotConfig.color.text}"
+                    x="${plotConfig.text.padding}px" 
+                    y="${labelAttributes.textValueY}px" font-size="${plotConfig.text.size}px"
+                    onmouseenter="${highlightOnMouseOver(['#q3', '#q3TextBox'], ['#q3LinkLine'], plotConfig)}"
+                    onmouseleave="${highlightOnMouseLeave(['#q3', '#q3TextBox'], ['#q3LinkLine'], plotConfig)}"
+                > ${q3} </text>
+        </svg>
     `);
     plotElements.push(`
-        <rect id="q1TextBox"
+        <svg class="label-box" id="q1LabelSvg"
             x="${labelAttributes.textContainerX}%" 
             y="${labelAttributes.q1.y}%"
-            rx="${plotConfig.text.radius}"
-            width="${labelAttributes.textContainerWidth}%"
-            height="${plotConfig.text.size*2+plotConfig.text.padding*2}%" 
-            fill="${plotConfig.color.fill}"
-            stroke="${plotConfig.color.border}" stroke-width="${0}"
-            onmouseenter="${highlightOnMouseOver(['#q1', '#q1TextBox'], ['#q1LinkLine'], plotConfig)}"
-            onmouseleave="${highlightOnMouseLeave(['#q1', '#q1TextBox'], ['#q1LinkLine'], plotConfig)}"
-        />
-            <text fill="${plotConfig.color.label}"
-                x="${labelAttributes.textContainerX+plotConfig.text.padding}%" 
-                y="${labelAttributes.q1.textY}%" font-size="${plotConfig.text.size}vh"
+        >
+            <rect id="q1TextBox"
+                rx="${plotConfig.text.radius}"
+                width="${labelAttributes.textContainerWidth}%"
+                height="${labelAttributes.textBoxHeight}px" 
+                fill="${plotConfig.color.fill}"
+                stroke="${plotConfig.color.border}" stroke-width="${0}"
                 onmouseenter="${highlightOnMouseOver(['#q1', '#q1TextBox'], ['#q1LinkLine'], plotConfig)}"
                 onmouseleave="${highlightOnMouseLeave(['#q1', '#q1TextBox'], ['#q1LinkLine'], plotConfig)}"
-            > 25th Percentile </text>
-            <text fill="${plotConfig.color.text}"
-                x="${labelAttributes.textContainerX+plotConfig.text.padding}%" 
-                y="${labelAttributes.q1.textY+plotConfig.text.size}%" font-size="${plotConfig.text.size}vh"
-                onmouseenter="${highlightOnMouseOver(['#q1', '#q1TextBox'], ['#q1LinkLine'], plotConfig)}"
-                onmouseleave="${highlightOnMouseLeave(['#q1', '#q1TextBox'], ['#q1LinkLine'], plotConfig)}"
-            > ${q1} </text>
+            />
+                <text fill="${plotConfig.color.label}"
+                    x="${plotConfig.text.padding}px" 
+                    y="${labelAttributes.textLabelY}px" font-size="${plotConfig.text.size}px"
+                    onmouseenter="${highlightOnMouseOver(['#q1', '#q1TextBox'], ['#q1LinkLine'], plotConfig)}"
+                    onmouseleave="${highlightOnMouseLeave(['#q1', '#q1TextBox'], ['#q1LinkLine'], plotConfig)}"
+                > 25th Percentile </text>
+                <text fill="${plotConfig.color.text}"
+                    x="${plotConfig.text.padding}px" 
+                    y="${labelAttributes.textValueY}px" font-size="${plotConfig.text.size}px"
+                    onmouseenter="${highlightOnMouseOver(['#q1', '#q1TextBox'], ['#q1LinkLine'], plotConfig)}"
+                    onmouseleave="${highlightOnMouseLeave(['#q1', '#q1TextBox'], ['#q1LinkLine'], plotConfig)}"
+                > ${q1} </text>
+        </svg>
     `);
     plotElements.push(`
-        <rect id="medianTextBox"
+        <svg class="label-box" id="medianLabelSvg"
             x="${labelAttributes.textContainerX}%" 
             y="${labelAttributes.median.y}%"
-            rx="${plotConfig.text.radius}"
-            width="${labelAttributes.textContainerWidth}%"
-            height="${plotConfig.text.size*2+plotConfig.text.padding*2}%" 
-            fill="${plotConfig.color.fill}"
-            stroke="${plotConfig.color.border}" stroke-width="${0}"
-            onmouseenter="${highlightOnMouseOver(['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
-            onmouseleave="${highlightOnMouseLeave(['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
-        />
-            <text fill="${plotConfig.color.label}"
-                x="${labelAttributes.textContainerX+plotConfig.text.padding}%" 
-                y="${labelAttributes.median.textY}%" font-size="${plotConfig.text.size}vh"
+        >
+            <rect id="medianTextBox"
+                rx="${plotConfig.text.radius}"
+                width="${labelAttributes.textContainerWidth}%"
+                height="${labelAttributes.textBoxHeight}px" 
+                fill="${plotConfig.color.fill}"
+                stroke="${plotConfig.color.border}" stroke-width="${0}"
                 onmouseenter="${highlightOnMouseOver(['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
                 onmouseleave="${highlightOnMouseLeave(['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
-            > Median </text>
-            <text fill="${plotConfig.color.text}"
-                x="${labelAttributes.textContainerX+plotConfig.text.padding}%" 
-                y="${labelAttributes.median.textY+plotConfig.text.size}%" font-size="${plotConfig.text.size}vh"
-                onmouseenter="${highlightOnMouseOver(['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
-                onmouseleave="${highlightOnMouseLeave(['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
-            > ${median} </text>
+            />
+                <text fill="${plotConfig.color.label}"
+                    x="${plotConfig.text.padding}px" 
+                    y="${labelAttributes.textLabelY}px" font-size="${plotConfig.text.size}px"
+                    onmouseenter="${highlightOnMouseOver(['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
+                    onmouseleave="${highlightOnMouseLeave(['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
+                > Median </text>
+                <text fill="${plotConfig.color.text}"
+                    x="${plotConfig.text.padding}px" 
+                    y="${labelAttributes.textValueY}px" font-size="${plotConfig.text.size}px"
+                    onmouseenter="${highlightOnMouseOver(['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
+                    onmouseleave="${highlightOnMouseLeave(['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
+                > ${median} </text>
+        </svg>
     `);
     plotElements.push(`
-        <rect id="minTextBox"
+        <svg class="label-box" id="minLabelSvg"
             x="${labelAttributes.textContainerX}%" 
             y="${labelAttributes.min.y}%"
-            rx="${plotConfig.text.radius}"
-            width="${labelAttributes.textContainerWidth}%"
-            height="${plotConfig.text.size*2+plotConfig.text.padding*2}%" 
-            fill="${plotConfig.color.fill}"
-            stroke="${plotConfig.color.border}" stroke-width="${0}"
-            onmouseenter="${highlightOnMouseOver(['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
-            onmouseleave="${highlightOnMouseLeave(['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
-        />
-            <text fill="${plotConfig.color.label}"
-                x="${labelAttributes.textContainerX+plotConfig.text.padding}%" 
-                y="${labelAttributes.min.textY}%" font-size="${plotConfig.text.size}vh"
+        >
+            <rect id="minTextBox"
+                rx="${plotConfig.text.radius}"
+                width="${labelAttributes.textContainerWidth}%"
+                height="${labelAttributes.textBoxHeight}px" 
+                fill="${plotConfig.color.fill}"
+                stroke="${plotConfig.color.border}" stroke-width="${0}"
                 onmouseenter="${highlightOnMouseOver(['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
                 onmouseleave="${highlightOnMouseLeave(['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
-            > Min </text>
-            <text fill="${plotConfig.color.text}"
-                x="${labelAttributes.textContainerX+plotConfig.text.padding}%" 
-                y="${labelAttributes.min.textY+plotConfig.text.size}%" font-size="${plotConfig.text.size}vh"
-                onmouseenter="${highlightOnMouseOver(['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
-                onmouseleave="${highlightOnMouseLeave(['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
-            > ${min} </text>
+            />
+                <text fill="${plotConfig.color.label}"
+                    x="${plotConfig.text.padding}px" 
+                    y="${labelAttributes.textLabelY}px" font-size="${plotConfig.text.size}px"
+                    onmouseenter="${highlightOnMouseOver(['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
+                    onmouseleave="${highlightOnMouseLeave(['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
+                > Min </text>
+                <text fill="${plotConfig.color.text}"
+                    x="${plotConfig.text.padding}px" 
+                    y="${labelAttributes.textValueY}px" font-size="${plotConfig.text.size}px"
+                    onmouseenter="${highlightOnMouseOver(['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
+                    onmouseleave="${highlightOnMouseLeave(['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
+                > ${min} </text>
+        </svg>
     `);
 
     return plotElements
@@ -289,78 +304,31 @@ const getLabelAttributes = ({
     q1, q3, median, max, min
 }, plotConfig) => {
     const textContainerX = plotConfig.padding*3 + plotConfig.boxWidth + plotConfig.boxInset;
-    const textBoxHeight = plotConfig.text.size*2+plotConfig.text.padding*2;
+    const textBoxHeight = plotConfig.text.size*2+plotConfig.text.padding*2; // px
     const textContainerWidth = 100 - plotConfig.padding*4 - plotConfig.boxWidth - plotConfig.boxInset;
     const labelConfig = {
-        min: { y: undefined, textY: undefined },
-        max: { y: undefined, textY: undefined },
-        q1: { y: undefined, textY: undefined },
-        median: { y: undefined, textY: undefined },
-        q3: { y: undefined, textY: undefined },
+        min: { y: undefined },
+        max: { y: undefined },
+        q1: { y: undefined },
+        median: { y: undefined },
+        q3: { y: undefined },
+        textLabelY: plotConfig.text.size+(plotConfig.text.padding*0.5), // px
+        textValueY: (plotConfig.text.size*2)+(plotConfig.text.padding*0.5), // px
         textContainerX,
         textBoxHeight,
         textContainerWidth,
     }
 
     labelConfig.min.y = min.y;
-    labelConfig.max.y = max.y-textBoxHeight;
-    labelConfig.q1.y = q1.y+(0.5*q1.h)-(0.5*textBoxHeight);
-    labelConfig.median.y = median.y-(0.5*textBoxHeight);
-    labelConfig.q3.y = q3.y+(0.5*q3.h)-(0.5*textBoxHeight);
+    labelConfig.max.y = max.y;
+    labelConfig.q1.y = q1.y+(0.5*q1.h);
+    labelConfig.median.y = median.y;
+    labelConfig.q3.y = q3.y+(0.5*q3.h);
 
-    if (plotConfig.inverted) {
-        labelConfig.max.y = max.y;
-        labelConfig.min.y = min.y-textBoxHeight;
-    }
-
-
-    // clean and fix any overlap that may have been calculated
-    const keys = Object.keys(labelConfig);
-    const values = keys.map((key) => ({
-        // track all keys with y property
-        key, y: labelConfig[key].y
-    })).filter((val) => (!!val.y))
-
-    // check top -> down
-    values.sort((a, b) => (a.y - b.y));
-    values.forEach((curr, i) => {
-        // only shift up second to last element (no shifting max/min)
-        if (i < values.length-2) {
-            const next = values[i+1];
-            // check for "overlapping", and shift down to "next pixel"
-            if (curr.y+textBoxHeight > next.y) {
-                next.y = curr.y+textBoxHeight;
-            }
-        }
-    });
-    
-    // check bottom -> up
-    values.sort((a, b) => (b.y - a.y));
-    values.forEach((curr, i) => {
-        // only shift up second to last element (no shifting max/min)
-        if (i < values.length-2) {
-            const next = values[i+1];
-            // check for "overlapping", and shift up to "next pixel"
-            if (next.y+textBoxHeight > curr.y) {
-                next.y = curr.y-textBoxHeight;
-            }
-        }
-    });
-
-    // update y values that required shifting
-    values.forEach((shiftedValue) => {
-        const { key, y } = shiftedValue;
-        labelConfig[key].y = y;
-    });
-
-
-    // set text height based on text box y position
-    const textOffset = plotConfig.text.size+(0.5*plotConfig.text.padding);
-    labelConfig.min.textY = labelConfig.min.y+textOffset;
-    labelConfig.max.textY = labelConfig.max.y+textOffset;
-    labelConfig.q1.textY = labelConfig.q1.y+textOffset;
-    labelConfig.median.textY = labelConfig.median.y+textOffset;
-    labelConfig.q3.textY = labelConfig.q3.y+textOffset;
+    // if (plotConfig.inverted) {
+    //     labelConfig.max.y = max.y;
+    //     labelConfig.min.y = min.y;
+    // }
 
     // console.debug(labelConfig);
     return labelConfig;

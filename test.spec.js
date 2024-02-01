@@ -52,7 +52,7 @@ fs.writeFileSync(
         q1: 72.489,
         median: 82.1231,
     }, {
-        inverted: false
+        inverted: true
     })
 );
 fs.writeFileSync(

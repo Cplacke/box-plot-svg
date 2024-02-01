@@ -1,13 +1,15 @@
 const { createBoxPlotSvgElements } = require('./src/graph')
+const { onLoadPositionLabels } = require('./src/utils')
 
 // grid config settings
 const defaultConfig = {
     padding: 2.5,
     boxWidth: 12.5,
     boxInset: 2,
+    style: '',
     text: {
-        size: 2.8,
-        padding: 1,
+        size: 20,
+        padding: 5,
         radius: 2,
         font: 'OptumSans, helvetica, sans-serif, monospace',
     },
@@ -27,6 +29,10 @@ const defaultConfig = {
     inverted: true, // when true max renders at top
 }
 
+const onload = () => (`
+    console.log('loaded SVG image ....')
+`)
+
 const createBoxPlotSVG = ({
     min, max, q1, median, q3,
 }, config = {}) => {
@@ -34,8 +40,9 @@ const createBoxPlotSVG = ({
     config = Object.assign(defaultConfig, config);
 
     const svg = `
-        <svg viewBox="100% 100%" xmlns="http://www.w3.org/2000/svg" 
-            style="background-color: transparent; font-family: ${config.text.font}"
+        <svg id="boxPlot" viewBox="100% 100%" xmlns="http://www.w3.org/2000/svg" 
+            style="background-color: transparent; font-family: ${config.text.font}; ${config.style}"
+            onload="${onLoadPositionLabels(config)}"
         >${ 
             createBoxPlotSvgElements({  
                 min: min.toString(), 
