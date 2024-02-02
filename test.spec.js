@@ -9,6 +9,8 @@ fs.writeFileSync(
         q3: 17,
         q1: 12,
         median: 15,
+    },{
+        staticLabels: true
     })
 );
 fs.writeFileSync(
@@ -52,7 +54,8 @@ fs.writeFileSync(
         q1: 72.489,
         median: 82.1231,
     }, {
-        inverted: true
+        inverted: true,
+        staticLabels: true
     })
 );
 fs.writeFileSync(

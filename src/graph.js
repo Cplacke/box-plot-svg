@@ -326,11 +326,18 @@ const getLabelAttributes = ({
     labelConfig.median.y = median.y;
     labelConfig.q3.y = q3.y+(0.5*q3.h);
 
-    // if (plotConfig.inverted) {
-    //     labelConfig.max.y = max.y;
-    //     labelConfig.min.y = min.y;
-    // }
+    if (plotConfig.inverted) {
+        labelConfig.max.y = max.y;
+        labelConfig.min.y = min.y;
+    }
 
+    if (plotConfig.staticLabels) {
+        labelConfig.min.y = plotConfig.inverted ? 85 : 7;
+        labelConfig.max.y = plotConfig.inverted ? 7 : 85;
+        labelConfig.q1.y = plotConfig.inverted ? 70: 30;
+        labelConfig.median.y = 50;
+        labelConfig.q3.y = plotConfig.inverted ? 30 : 70;
+    }
     // console.debug(labelConfig);
     return labelConfig;
 }

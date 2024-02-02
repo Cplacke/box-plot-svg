@@ -1,68 +1,8 @@
 
-        <svg id="boxPlot" viewBox="100% 100%" xmlns="http://www.w3.org/2000/svg" 
+        <svg id="boxPlot-1706837719646-442" viewBox="100% 100%" xmlns="http://www.w3.org/2000/svg" 
             style="background-color: transparent; font-family: OptumSans, helvetica, sans-serif, monospace; "
-            onload="
-    var boxPlotSVG = window.document.querySelector('#boxPlot');
-    var labelSVGs = window.document.querySelectorAll('.label-box');
-
-    var labelBoxPercentage = (labelSVGs[0].children[0].height.baseVal.value/boxPlotSVG.getBBox().height)*100;
-
-    if (false == true) {
-        window.document.querySelector('#maxLabelSvg').setAttribute('y', 2.5+'%');
-        window.document.querySelector('#minLabelSvg').setAttribute('y', 100-2.5-labelBoxPercentage+'%');
-    } else {
-        window.document.querySelector('#maxLabelSvg').setAttribute('y', 100-2.5-labelBoxPercentage+'%');
-        window.document.querySelector('#minLabelSvg').setAttribute('y', 2.5+'%');
-    }
-
-    var values = [];
-    labelSVGs.forEach((element) => {
-        values.push({ 
-            id: element.id, 
-            y: Number(element.getAttribute('y').toString().replace('%', ''))
-        });
-    });
-
-    values.forEach((ele) => {
-        if (!/min|max/.test(ele.id)) {
-            ele.y = ele.y - (0.5*labelBoxPercentage);
-        }
-    });
-    
-    values.sort((a, b) => (a.y - b.y));
-    values.forEach((curr, i) => {
-        if (i &lt; values.length-2) {
-            const next = values[i+1];
-
-            if (curr.y+labelBoxPercentage &gt; next.y &amp;&amp; !/min|max/.test(next.id)) {
-                console.info(i, 'end: ', curr.y+labelBoxPercentage, '; next:', next.y);
-                next.y = curr.y+labelBoxPercentage;
-            }
-        }
-    });
-    console.info(values);
-
-    
-    values.sort((a, b) => (b.y - a.y));
-    values.forEach((curr, i) => {
-        if (i &lt; values.length-2) {
-            const next = values[i+1];
-            if (next.y+labelBoxPercentage &gt; curr.y &amp;&amp; !/min|max/.test(next.id)) {
-                next.y = curr.y-labelBoxPercentage;
-                console.info('SHFIT SFHIT');
-            }
-        }
-    });
-
-    values.forEach((shiftedValue) => {
-        const { id, y } = shiftedValue;
-        console.info(id, y);
-        window.document.querySelector('#'+id).setAttribute('y', y+'%');
-        window.document.querySelector('#'+id.replace('LabelSvg', 'LinkLine')).setAttribute('y2', y+(0.5*labelBoxPercentage)+'%');
-    });
-    console.info(values);
-"
-        >
+        > 
+        
         <line id="center-line"
             x1="10.75%" y1="2.5%" 
             x2="10.75%" y2="97.5%"
@@ -70,39 +10,39 @@
         />
     ,
         <line id="maxLinkLine" display="none" class="link-link"
-            x1="12.75%" y1="97.5%" 
-            x2="22%" y2="98.5%"
+            x1="12.75%" y1="2.5%" 
+            x2="22%" y2="8%"
             stroke="#B4C9E7" stroke-width="1.5"
         />
     ,
         <line id="q3LinkLine" display="none" class="link-link"
-            x1="17%" y1="85.10492249999999%" 
-            x2="22%" y2="86.10492249999999%"
+            x1="17%" y1="14.895077500000014%" 
+            x2="22%" y2="31%"
             stroke="#B4C9E7" stroke-width="1.5"
         />
     ,
         <line id="medianLinkLine" display="none" class="link-link"
-            x1="19%" y1="80.51694499999999%" 
-            x2="22%" y2="81.51694499999999%"
+            x1="19%" y1="19.483055000000007%" 
+            x2="22%" y2="51%"
             stroke="#B4C9E7" stroke-width="1.5"
         />
     ,
         <line id="q1LinkLine" display="none" class="link-link"
-            x1="17%" y1="75.94074749999999%" 
-            x2="22%" y2="76.94074749999999%"
+            x1="17%" y1="24.059252500000007%" 
+            x2="22%" y2="71%"
             stroke="#B4C9E7" stroke-width="1.5"
         />
     ,
         <line id="minLinkLine" display="none" class="link-link"
-            x1="12.75%" y1="2.5%" 
-            x2="22%" y2="3.5%"
+            x1="12.75%" y1="97.5%" 
+            x2="22%" y2="86%"
             stroke="#B4C9E7" stroke-width="1.5"
         />
     ,
         <rect id="q3"
             height="9.175954999999988%" width="12.5%"
             x="4.5%" 
-            y="80.51694499999999%"
+            y="10.30710000000002%"
             fill="#ECF2F9"
             stroke="#B4C9E7" stroke-width="1.5"
             onmouseenter="window.document.querySelectorAll('#q3,#q3TextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#q3LinkLine').forEach((element)=>{element.setAttribute('display','1');});"
@@ -112,7 +52,7 @@
         <rect id="q1"
             height="9.152394999999999%" width="12.5%"
             x="4.5%" 
-            y="71.36455%"
+            y="19.483055000000007%"
             fill="#ECF2F9"
             stroke="#B4C9E7" stroke-width="1.5"
             onmouseenter="window.document.querySelectorAll('#q1,#q1TextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#q1LinkLine').forEach((element)=>{element.setAttribute('display','1');});"
@@ -120,24 +60,24 @@
         />
     ,
         <line id="median"
-            x1="2.5%" y1="80.51694499999999%" 
-            x2="19%" y2="80.51694499999999%"
+            x1="2.5%" y1="19.483055000000007%" 
+            x2="19%" y2="19.483055000000007%"
             stroke="#1965AE" stroke-width="2.25"
             onmouseenter="window.document.querySelectorAll('#median,#medianTextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#medianLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
             onmouseleave="window.document.querySelectorAll('#median,#medianTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#medianLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
         />
     ,
         <line id="max"
-            x1="8.75%" y1="97.5%" 
-            x2="12.75%" y2="97.5%"
+            x1="8.75%" y1="2.5%" 
+            x2="12.75%" y2="2.5%"
             stroke="#1965AE" stroke-width="2.25"
             onmouseenter="window.document.querySelectorAll('#max,#maxTextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#maxLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
             onmouseleave="window.document.querySelectorAll('#max,#maxTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#maxLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
         />
     ,
         <line id="min"
-            x1="8.75%" y1="2.5%" 
-            x2="12.75%" y2="2.5%"
+            x1="8.75%" y1="97.5%" 
+            x2="12.75%" y2="97.5%"
             stroke="#1965AE" stroke-width="2.25"
             onmouseenter="window.document.querySelectorAll('#min,#minTextBox').forEach((element)=>{element.setAttribute('fill','#D7E5F6');});window.document.querySelectorAll('#minLinkLine').forEach((element)=>{element.setAttribute('display','1');});"
             onmouseleave="window.document.querySelectorAll('#min,#minTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#minLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
@@ -145,7 +85,7 @@
     ,
         <svg class="label-box" id="maxLabelSvg"
             x="22%" 
-            y="97.5%"
+            y="7%"
         >
             <rect id="maxTextBox"
                 rx="2"
@@ -172,7 +112,7 @@
     ,
         <svg class="label-box" id="q3LabelSvg"
             x="22%" 
-            y="85.10492249999999%"
+            y="30%"
         >
             <rect id="q3TextBox"
                 rx="2"
@@ -199,7 +139,7 @@
     ,
         <svg class="label-box" id="q1LabelSvg"
             x="22%" 
-            y="75.94074749999999%"
+            y="70%"
         >
             <rect id="q1TextBox"
                 rx="2"
@@ -226,7 +166,7 @@
     ,
         <svg class="label-box" id="medianLabelSvg"
             x="22%" 
-            y="80.51694499999999%"
+            y="50%"
         >
             <rect id="medianTextBox"
                 rx="2"
@@ -253,7 +193,7 @@
     ,
         <svg class="label-box" id="minLabelSvg"
             x="22%" 
-            y="2.5%"
+            y="85%"
         >
             <rect id="minTextBox"
                 rx="2"
@@ -277,5 +217,7 @@
                     onmouseleave="window.document.querySelectorAll('#min,#minTextBox').forEach((element)=>{element.setAttribute('fill','#ECF2F9');});window.document.querySelectorAll('#minLinkLine').forEach((element)=>{element.setAttribute('display','none');});"
                 > 0 </text>
         </svg>
-    </svg>
+    
+        <script></script>
+        </svg>
     

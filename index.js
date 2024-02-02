@@ -27,27 +27,32 @@ const defaultConfig = {
         text: '#282A2E',
     },
     inverted: true, // when true max renders at top
+    staticLabels: false, // when true, no script calculations or positioning based on values
 }
 
 const createBoxPlotSVG = ({
     min, max, q1, median, q3,
 }, config = {}) => {
-    // merge configs so all attributes are provided
-    config = Object.assign(defaultConfig, config);
-
+    const id = `boxPlot-${Date.now()}-${Math.floor(Math.random()*1000)}`;
+    config = { // merge configs so all attributes are provided
+        ...defaultConfig,
+        ...config
+    };
     const svg = `
-        <svg id="boxPlot" viewBox="100% 100%" xmlns="http://www.w3.org/2000/svg" 
+        <svg id="${id}" viewBox="100% 100%" xmlns="http://www.w3.org/2000/svg" 
             style="background-color: transparent; font-family: ${config.text.font}; ${config.style}"
-            onload="${onLoadPositionLabels(config)}"
-        >${ 
+        > 
+        ${ 
             createBoxPlotSvgElements({  
                 min: min.toString(), 
                 max: max.toString(), 
                 q1: q1.toString(), 
                 median: median.toString(), 
                 q3: q3.toString(), 
-            }, defaultConfig)
-        }</svg>
+            }, config) 
+        }
+        <script>${config.staticLabels ? '' : onLoadPositionLabels(id, config)}</script>
+        </svg>
     `;
     return svg;
 }

@@ -23,11 +23,12 @@ const highlightOnMouseLeave = (fillTags, showTags, plotConfig) => {
     `.replace(/\s*/g, '');
 }
 
-const onLoadPositionLabels = (plotConfig) => (`
-    var boxPlotSVG = window.document.querySelector('#boxPlot');
+const onLoadPositionLabels = (id, plotConfig) => (`
+    var boxPlotSVG = window.document.querySelector('#${id}');
     var labelSVGs = window.document.querySelectorAll('.label-box');
+    var textBoxRect = window.document.querySelector('.label-box rect');
 
-    var labelBoxPercentage = (labelSVGs[0].children[0].height.baseVal.value/boxPlotSVG.getBBox().height)*100;
+    var labelBoxPercentage = (textBoxRect.height.baseVal.value/boxPlotSVG.getBBox().height)*100;
 
     if (${plotConfig.inverted} == true) {
         window.document.querySelector('#maxLabelSvg').setAttribute('y', ${plotConfig.padding}+'%');
@@ -55,15 +56,11 @@ const onLoadPositionLabels = (plotConfig) => (`
     values.forEach((curr, i) => {
         if (i &lt; values.length-2) {
             const next = values[i+1];
-
             if (curr.y+labelBoxPercentage &gt; next.y &amp;&amp; !/min|max/.test(next.id)) {
-                console.info(i, 'end: ', curr.y+labelBoxPercentage, '; next:', next.y);
                 next.y = curr.y+labelBoxPercentage;
             }
         }
     });
-    console.info(values);
-
     
     values.sort((a, b) => (b.y - a.y));
     values.forEach((curr, i) => {
@@ -71,18 +68,16 @@ const onLoadPositionLabels = (plotConfig) => (`
             const next = values[i+1];
             if (next.y+labelBoxPercentage &gt; curr.y &amp;&amp; !/min|max/.test(next.id)) {
                 next.y = curr.y-labelBoxPercentage;
-                console.info('SHFIT SFHIT');
             }
         }
     });
 
     values.forEach((shiftedValue) => {
         const { id, y } = shiftedValue;
-        console.info(id, y);
         window.document.querySelector('#'+id).setAttribute('y', y+'%');
         window.document.querySelector('#'+id.replace('LabelSvg', 'LinkLine')).setAttribute('y2', y+(0.5*labelBoxPercentage)+'%');
     });
-    console.info(values);
+    console.debug('box-plot-svg::onLoadPositionLabels::complete');
 `);
 
 module.exports = {
