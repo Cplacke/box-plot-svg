@@ -8,7 +8,7 @@ const defaultConfig = {
     boxInset: 2,
     style: '',
     text: {
-        size: 20,
+        size: 12,
         padding: 5,
         radius: 2,
         font: 'OptumSans, helvetica, sans-serif, monospace',

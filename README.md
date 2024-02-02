@@ -1,6 +1,8 @@
 # Box Plot SVG Graph
 This is a simple Zero dependency implementation that generates a Box and Whisker plot based on the provided data summary and rendering it in a simple interactive SVG image that can be embedded into applications, website, documents, or whatever else your need may be.
 
+For best results the values are placed dynamically based on the data summary values, this requires javascript to be run in order to place and ensure there is no overlapping, if this does not work for your use case you can turn this off with the `staticLabels` option
+
 ## Examples
 Below are a few SVG box plots that were generated from `test.spec.js` to refer to generation sample code
 
@@ -55,6 +57,11 @@ const defaultConfig = {
         lineHover: '#B4C9E7',
         text: '#282A2E',
     },
-    inverted: true // when true max renders at top
+    inverted: true, // when true max renders at top
+    staticLabels: false, // no dynamic positioning based on values or script run
 }
 ```
+
+### Limitations
+
+Currently there is no support for passing a direct array of data for quartiles to be calculated at runtime, this is a future enhancement if you would like to help make this project better. There is no support for outlier rendering as points beyond the min/max. The dynamic posistion of the labels happens at document load time with a script implementation, due to the mix of `%` units for spacing and `px` units for text sizing.
