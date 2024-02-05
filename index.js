@@ -1,5 +1,5 @@
 const { createBoxPlotSvgElements } = require('./src/graph')
-const { getId, mergeConfig } = require('./src/utils')
+const { getId, mergeConfig, defaultConfig } = require('./src/utils')
 const { onLoadPositionLabels, positionLabels } = require('./src/events')
 
 
