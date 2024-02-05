@@ -1,5 +1,6 @@
 const { createBoxPlotSvgElements } = require('./src/graph')
-const { onLoadPositionLabels } = require('./src/events')
+const { getId } = require('./src/utils')
+const { onLoadPositionLabels, positionLabels } = require('./src/events')
 
 // grid config settings
 const defaultConfig = {
@@ -60,4 +61,6 @@ const createBoxPlotSVG = ({
 module.exports = {
     createBoxPlotSVG,
     defaultConfig,
+    positionLabels,
+    getId
 }

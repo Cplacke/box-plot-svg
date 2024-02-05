@@ -1,5 +1,5 @@
 
-        <svg id="boxPlot-1706895611308-346" viewBox="100% 100%" xmlns="http://www.w3.org/2000/svg" 
+        <svg id="boxPlot-1706899199884-907" viewBox="100% 100%" xmlns="http://www.w3.org/2000/svg" 
             style="background-color: transparent; font-family: OptumSans, helvetica, sans-serif, monospace; "
         > 
         
@@ -219,36 +219,37 @@
         </svg>
     
         <script>
-    var boxPlotSVG = window.document.querySelector('#boxPlot-1706895611308-346');
-    var labelSVGs = window.document.querySelectorAll('.label-box');
-    var textBoxRect = window.document.querySelector('.label-box rect');
+    const position = (id, plotConfig) =&gt; {
+    var boxPlotSVG = window.document.querySelector(`#${id}`);
+    var labelSVGs = window.document.querySelectorAll(`#${id} .label-box`);
+    var textBoxRect = window.document.querySelector(`#${id} .label-box rect`);
 
     var labelBoxPercentage = (textBoxRect.height.baseVal.value/boxPlotSVG.getBBox().height)*100;
 
-    if (true == true) {
-        window.document.querySelector('#maxLabelSvg').setAttribute('y', 2.5+'%');
-        window.document.querySelector('#minLabelSvg').setAttribute('y', 100-2.5-labelBoxPercentage+'%');
+    if (plotConfig.inverted == true) {
+        window.document.querySelector('#maxLabelSvg').setAttribute('y', `${plotConfig.padding}%`);
+        window.document.querySelector('#minLabelSvg').setAttribute('y', `${100-plotConfig.padding-labelBoxPercentage}%`);
     } else {
-        window.document.querySelector('#maxLabelSvg').setAttribute('y', 100-2.5-labelBoxPercentage+'%');
-        window.document.querySelector('#minLabelSvg').setAttribute('y', 2.5+'%');
+        window.document.querySelector('#maxLabelSvg').setAttribute('y', `${100-plotConfig.padding-labelBoxPercentage}%`);
+        window.document.querySelector('#minLabelSvg').setAttribute('y', `${lotConfig.padding}}%`);
     }
 
     var values = [];
-    labelSVGs.forEach((element) => {
+    labelSVGs.forEach((element) =&gt; {
         values.push({ 
             id: element.id, 
             y: Number(element.getAttribute('y').toString().replace('%', ''))
         });
     });
 
-    values.forEach((ele) => {
+    values.forEach((ele) =&gt; {
         if (!/min|max/.test(ele.id)) {
             ele.y = ele.y - (0.5*labelBoxPercentage);
         }
     });
     
-    values.sort((a, b) => (a.y - b.y));
-    values.forEach((curr, i) => {
+    values.sort((a, b) =&gt; (a.y - b.y));
+    values.forEach((curr, i) =&gt; {
         if (i &lt; values.length-2) {
             const next = values[i+1];
             if (curr.y+labelBoxPercentage &gt; next.y &amp;&amp; !/min|max/.test(next.id)) {
@@ -257,8 +258,8 @@
         }
     });
     
-    values.sort((a, b) => (b.y - a.y));
-    values.forEach((curr, i) => {
+    values.sort((a, b) =&gt; (b.y - a.y));
+    values.forEach((curr, i) =&gt; {
         if (i &lt; values.length-2) {
             const next = values[i+1];
             if (next.y+labelBoxPercentage &gt; curr.y &amp;&amp; !/min|max/.test(next.id)) {
@@ -267,12 +268,14 @@
         }
     });
 
-    values.forEach((shiftedValue) => {
+    values.forEach((shiftedValue) =&gt; {
         const { id, y } = shiftedValue;
         window.document.querySelector('#'+id).setAttribute('y', y+'%');
         window.document.querySelector('#'+id.replace('LabelSvg', 'LinkLine')).setAttribute('y2', y+(0.5*labelBoxPercentage)+'%');
     });
     console.debug('box-plot-svg::onLoadPositionLabels::complete');
+};
+    position('boxPlot-1706899199884-907', {"padding":2.5,"boxWidth":12.5,"boxInset":2,"style":"","text":{"size":12,"padding":5,"radius":2,"font":"OptumSans, helvetica, sans-serif, monospace"},"stroke":{"box":1.5,"line":1.5},"color":{"fill":"#ECF2F9","line":"#1965AE","border":"#B4C9E7","label":"#1965AE","fillHover":"#D7E5F6","lineHover":"#B4C9E7","text":"#282A2E"},"inverted":true,"staticLabels":false});
 </script>
         </svg>
     
