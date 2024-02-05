@@ -55,21 +55,31 @@ const positionLabels = (plotId, plotConfig) => {
         }
     });
     
-    values.sort((a, b) => (a.y - b.y));
+    values.sort((a, b) => {
+        if (/max/.test(a.elementId)) {
+            return -1;
+        }
+        return a.y - b.y;
+    });
     values.forEach((curr, i) => {
         if (i < values.length-2) {
             const next = values[i+1];
-            if (curr.y+labelBoxPercentage > next.y && !/min|max/.test(next.elementId)) {
+            if (curr.y+labelBoxPercentage >= next.y && !/min|max/.test(next.elementId)) {
                 next.y = curr.y+labelBoxPercentage;
             }
         }
     });
     
-    values.sort((a, b) => (b.y - a.y));
+    values.sort((a, b) => {
+        if (/min/.test(a.elementId)) {
+            return -1;
+        }
+        return b.y - a.y
+    });
     values.forEach((curr, i) => {
         if (i < values.length-2) {
             const next = values[i+1];
-            if (next.y+labelBoxPercentage > curr.y && !/min|max/.test(next.elementId)) {
+            if (next.y+labelBoxPercentage >= curr.y && !/min|max/.test(next.elementId)) {
                 next.y = curr.y-labelBoxPercentage;
             }
         }

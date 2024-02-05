@@ -71,3 +71,23 @@ fs.writeFileSync(
         style: 'border: 2px solid; border-radius: 10px; padding: 5px;'
     })
 );
+fs.writeFileSync(
+    './samples/box-plot-low-stack.svg',
+    createBoxPlotSVG({
+        min: 0,
+        max: 50,
+        q3: 5,
+        q1: 0,
+        median: 2,
+    })
+);
+fs.writeFileSync(
+    './samples/box-plot-high-stack.svg',
+    createBoxPlotSVG({
+        min: 0,
+        max: 50,
+        q3: 50,
+        q1: 40,
+        median: 47,
+    })
+);
