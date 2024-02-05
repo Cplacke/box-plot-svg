@@ -30,6 +30,14 @@ const svg: string = createBoxPlotSVG({
 });
 ```
 
+If the event functions do run as expected, or images are dynamically added then you may need to invoke this in code after the image has been rendered and size has been determined by using the exported functions as in the below example
+
+```js
+const plotId = getId(svgString);
+positionLabels(plotId, plotConfig);
+```
+
+
 ### Config Object
 The default config for generating a box plot are below and can be modified to fit your needs, all units are in percent of total image
 
