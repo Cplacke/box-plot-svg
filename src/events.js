@@ -2,27 +2,27 @@ const { mergeConfig } = require("./utils");
 
 const highlightOnMouseOver = (plotId, fillTags, showTags, plotConfig) => { 
     return `
-        window.document.querySelectorAll('#${plotId} ${fillTags.join(',')}')
+        window.document.querySelectorAll('${fillTags.map((tag)=>(`#${plotId} ${tag}`)).join(',')}')
             .forEach((element) => {
                 element.setAttribute('fill', '${plotConfig.color.fillHover}');
             });
-        window.document.querySelectorAll('#${plotId} ${showTags.join(',')}')
+        window.document.querySelectorAll('${showTags.map((tag)=>(`#${plotId} ${tag}`)).join(',')}')
             .forEach((element) => {
                 element.setAttribute('display', '1');
             });
-    `.replace(/\s*/g, '');
+    `.replace(/\n/g, '');
 }
 const highlightOnMouseLeave = (plotId, fillTags, showTags, plotConfig) => {
     return `
-        window.document.querySelectorAll('#${plotId} ${fillTags.join(',')}')
+        window.document.querySelectorAll('${fillTags.map((tag)=>(`#${plotId} ${tag}`)).join(',')}')
             .forEach((element) => {
                 element.setAttribute('fill', '${plotConfig.color.fill}');
             });
-        window.document.querySelectorAll('#${plotId} ${showTags.join(',')}')
+        window.document.querySelectorAll('${showTags.map((tag)=>(`#${plotId} ${tag}`)).join(',')}')
             .forEach((element) => {
                 element.setAttribute('display', 'none');
             });
-    `.replace(/\s*/g, '');
+    `.replace(/\n/g, '');
 }
 
 const positionLabels = (plotId, plotConfig) => {
