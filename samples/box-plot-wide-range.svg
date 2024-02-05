@@ -1,5 +1,5 @@
 
-        <svg id="boxPlot-1706899199881-775" viewBox="100% 100%" xmlns="http://www.w3.org/2000/svg" 
+        <svg id="boxPlot-1707152191886-946" viewBox="100% 100%" xmlns="http://www.w3.org/2000/svg" 
             style="background-color: transparent; font-family: OptumSans, helvetica, sans-serif, monospace; "
         > 
         
@@ -231,7 +231,7 @@
         window.document.querySelector('#minLabelSvg').setAttribute('y', `${100-plotConfig.padding-labelBoxPercentage}%`);
     } else {
         window.document.querySelector('#maxLabelSvg').setAttribute('y', `${100-plotConfig.padding-labelBoxPercentage}%`);
-        window.document.querySelector('#minLabelSvg').setAttribute('y', `${lotConfig.padding}}%`);
+        window.document.querySelector('#minLabelSvg').setAttribute('y', `${plotConfig.padding}%`);
     }
 
     var values = [];
@@ -275,7 +275,7 @@
     });
     console.debug('box-plot-svg::onLoadPositionLabels::complete');
 };
-    position('boxPlot-1706899199881-775', {"padding":2.5,"boxWidth":12.5,"boxInset":2,"style":"","text":{"size":12,"padding":5,"radius":2,"font":"OptumSans, helvetica, sans-serif, monospace"},"stroke":{"box":1.5,"line":1.5},"color":{"fill":"#ECF2F9","line":"#1965AE","border":"#B4C9E7","label":"#1965AE","fillHover":"#D7E5F6","lineHover":"#B4C9E7","text":"#282A2E"},"inverted":true,"staticLabels":false});
+    position('boxPlot-1707152191886-946', {"padding":2.5,"boxWidth":12.5,"boxInset":2,"style":"","text":{"size":12,"padding":5,"radius":2,"font":"OptumSans, helvetica, sans-serif, monospace"},"stroke":{"box":1.5,"line":1.5},"color":{"fill":"#ECF2F9","line":"#1965AE","border":"#B4C9E7","label":"#1965AE","fillHover":"#D7E5F6","lineHover":"#B4C9E7","text":"#282A2E"},"inverted":true,"staticLabels":false});
 </script>
         </svg>
     

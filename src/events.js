@@ -35,7 +35,7 @@ const positionLabels = (id, plotConfig) => {
         window.document.querySelector('#minLabelSvg').setAttribute('y', `${100-plotConfig.padding-labelBoxPercentage}%`);
     } else {
         window.document.querySelector('#maxLabelSvg').setAttribute('y', `${100-plotConfig.padding-labelBoxPercentage}%`);
-        window.document.querySelector('#minLabelSvg').setAttribute('y', `${plotConfig.padding}}%`);
+        window.document.querySelector('#minLabelSvg').setAttribute('y', `${plotConfig.padding}%`);
     }
 
     var values = [];

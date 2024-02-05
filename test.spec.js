@@ -67,6 +67,7 @@ fs.writeFileSync(
         q1:     72.000000000100000000020000000003,
         median: 82.000000000100000000020000000003,
     }, {
-        inverted: false
+        inverted: false,
+        style: 'border: 2px solid; border-radius: 10px; padding: 5px;'
     })
 );
