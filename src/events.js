@@ -1,24 +1,24 @@
 const { mergeConfig } = require("./utils");
 
-const highlightOnMouseOver = (fillTags, showTags, plotConfig) => { 
+const highlightOnMouseOver = (plotId, fillTags, showTags, plotConfig) => { 
     return `
-        window.document.querySelectorAll('${fillTags.join(',')}')
+        window.document.querySelectorAll('#${plotId} ${fillTags.join(',')}')
             .forEach((element) => {
                 element.setAttribute('fill', '${plotConfig.color.fillHover}');
             });
-        window.document.querySelectorAll('${showTags.join(',')}')
+        window.document.querySelectorAll('#${plotId} ${showTags.join(',')}')
             .forEach((element) => {
                 element.setAttribute('display', '1');
             });
     `.replace(/\s*/g, '');
 }
-const highlightOnMouseLeave = (fillTags, showTags, plotConfig) => {
+const highlightOnMouseLeave = (plotId, fillTags, showTags, plotConfig) => {
     return `
-        window.document.querySelectorAll('${fillTags.join(',')}')
+        window.document.querySelectorAll('#${plotId} ${fillTags.join(',')}')
             .forEach((element) => {
                 element.setAttribute('fill', '${plotConfig.color.fill}');
             });
-        window.document.querySelectorAll('${showTags.join(',')}')
+        window.document.querySelectorAll('#${plotId} ${showTags.join(',')}')
             .forEach((element) => {
                 element.setAttribute('display', 'none');
             });
@@ -34,11 +34,11 @@ const positionLabels = (plotId, plotConfig) => {
     var labelBoxPercentage = (textBoxRect.height.baseVal.value/boxPlotSVG.getBBox().height)*100;
 
     if (plotConfig.inverted == true) {
-        window.document.querySelector('#maxLabelSvg').setAttribute('y', `${plotConfig.padding}%`);
-        window.document.querySelector('#minLabelSvg').setAttribute('y', `${100-plotConfig.padding-labelBoxPercentage}%`);
+        window.document.querySelector(`#${plotId} #maxLabelSvg`).setAttribute('y', `${plotConfig.padding}%`);
+        window.document.querySelector(`#${plotId} #minLabelSvg`).setAttribute('y', `${100-plotConfig.padding-labelBoxPercentage}%`);
     } else {
-        window.document.querySelector('#maxLabelSvg').setAttribute('y', `${100-plotConfig.padding-labelBoxPercentage}%`);
-        window.document.querySelector('#minLabelSvg').setAttribute('y', `${plotConfig.padding}%`);
+        window.document.querySelector(`#${plotId} #maxLabelSvg`).setAttribute('y', `${100-plotConfig.padding-labelBoxPercentage}%`);
+        window.document.querySelector(`#${plotId} #minLabelSvg`).setAttribute('y', `${plotConfig.padding}%`);
     }
 
     var values = [];

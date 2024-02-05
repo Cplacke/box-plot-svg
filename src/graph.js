@@ -3,7 +3,7 @@ const { highlightOnMouseOver, highlightOnMouseLeave } = require('./events');
 
 const createBoxPlotSvgElements = ({
     min, max, median, q1, q3
-}, plotConfig) => {
+}, plotConfig, plotId) => {
     const plotElements = [];
     const plotAttributes = getPlotAttributes({ min, max, median, q1, q3 }, plotConfig)
     const labelAttributes = getLabelAttributes(plotAttributes, plotConfig);
@@ -64,8 +64,8 @@ const createBoxPlotSvgElements = ({
             y="${plotAttributes.q3.y}%"
             fill="${plotConfig.color.fill}"
             stroke="${plotConfig.color.border}" stroke-width="${plotConfig.stroke.box}"
-            onmouseenter="${highlightOnMouseOver(['#q3', '#q3TextBox'], ['#q3LinkLine'], plotConfig)}"
-            onmouseleave="${highlightOnMouseLeave(['#q3', '#q3TextBox'], ['#q3LinkLine'], plotConfig)}"
+            onmouseenter="${highlightOnMouseOver(plotId, ['#q3', '#q3TextBox'], ['#q3LinkLine'], plotConfig)}"
+            onmouseleave="${highlightOnMouseLeave(plotId, ['#q3', '#q3TextBox'], ['#q3LinkLine'], plotConfig)}"
         />
     `);
     plotElements.push(`
@@ -75,8 +75,8 @@ const createBoxPlotSvgElements = ({
             y="${plotAttributes.q1.y}%"
             fill="${plotConfig.color.fill}"
             stroke="${plotConfig.color.border}" stroke-width="${plotConfig.stroke.box}"
-            onmouseenter="${highlightOnMouseOver(['#q1', '#q1TextBox'], ['#q1LinkLine'], plotConfig)}"
-            onmouseleave="${highlightOnMouseLeave(['#q1', '#q1TextBox'], ['#q1LinkLine'], plotConfig)}"
+            onmouseenter="${highlightOnMouseOver(plotId, ['#q1', '#q1TextBox'], ['#q1LinkLine'], plotConfig)}"
+            onmouseleave="${highlightOnMouseLeave(plotId, ['#q1', '#q1TextBox'], ['#q1LinkLine'], plotConfig)}"
         />
     `);
     plotElements.push(`
@@ -84,8 +84,8 @@ const createBoxPlotSvgElements = ({
             x1="${plotConfig.padding}%" y1="${plotAttributes.median.y}%" 
             x2="${plotConfig.padding+plotConfig.boxWidth+(plotConfig.boxInset*2)}%" y2="${plotAttributes.median.y}%"
             stroke="${plotConfig.color.line}" stroke-width="${plotConfig.stroke.line*1.5}"
-            onmouseenter="${highlightOnMouseOver(['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
-            onmouseleave="${highlightOnMouseLeave(['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
+            onmouseenter="${highlightOnMouseOver(plotId, ['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
+            onmouseleave="${highlightOnMouseLeave(plotId, ['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
         />
     `);
     plotElements.push(`
@@ -93,8 +93,8 @@ const createBoxPlotSvgElements = ({
             x1="${plotConfig.padding+(0.5*plotConfig.boxWidth)}%" y1="${plotAttributes.max.y}%" 
             x2="${plotConfig.padding+(0.5*plotConfig.boxWidth)+(plotConfig.boxInset*2)}%" y2="${plotAttributes.max.y}%"
             stroke="${plotConfig.color.line}" stroke-width="${plotConfig.stroke.line*1.5}"
-            onmouseenter="${highlightOnMouseOver(['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
-            onmouseleave="${highlightOnMouseLeave(['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
+            onmouseenter="${highlightOnMouseOver(plotId, ['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
+            onmouseleave="${highlightOnMouseLeave(plotId, ['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
         />
     `);
     plotElements.push(`
@@ -102,8 +102,8 @@ const createBoxPlotSvgElements = ({
             x1="${plotConfig.padding+(0.5*plotConfig.boxWidth)}%" y1="${plotAttributes.min.y}%" 
             x2="${plotConfig.padding+(0.5*plotConfig.boxWidth)+(plotConfig.boxInset*2)}%" y2="${plotAttributes.min.y}%"
             stroke="${plotConfig.color.line}" stroke-width="${plotConfig.stroke.line*1.5}"
-            onmouseenter="${highlightOnMouseOver(['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
-            onmouseleave="${highlightOnMouseLeave(['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
+            onmouseenter="${highlightOnMouseOver(plotId, ['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
+            onmouseleave="${highlightOnMouseLeave(plotId, ['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
         />
     `);
     
@@ -119,20 +119,20 @@ const createBoxPlotSvgElements = ({
                 height="${labelAttributes.textBoxHeight}px" 
                 fill="${plotConfig.color.fill}"
                 stroke="${plotConfig.color.border}" stroke-width="${0}"
-                onmouseenter="${highlightOnMouseOver(['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
-                onmouseleave="${highlightOnMouseLeave(['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
+                onmouseenter="${highlightOnMouseOver(plotId, ['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
+                onmouseleave="${highlightOnMouseLeave(plotId, ['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
             />
                 <text fill="${plotConfig.color.label}"
                     x="${plotConfig.text.padding}px" 
                     y="${labelAttributes.textLabelY}px" font-size="${plotConfig.text.size}px"
-                    onmouseenter="${highlightOnMouseOver(['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
-                    onmouseleave="${highlightOnMouseLeave(['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
+                    onmouseenter="${highlightOnMouseOver(plotId, ['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
+                    onmouseleave="${highlightOnMouseLeave(plotId, ['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
                 > Max </text>
                 <text fill="${plotConfig.color.text}"
                 x="${plotConfig.text.padding}px" 
                 y="${labelAttributes.textValueY}px" font-size="${plotConfig.text.size}px"
-                    onmouseenter="${highlightOnMouseOver(['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
-                    onmouseleave="${highlightOnMouseLeave(['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
+                    onmouseenter="${highlightOnMouseOver(plotId, ['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
+                    onmouseleave="${highlightOnMouseLeave(plotId, ['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
                 > ${max} </text>
         </svg>
     `);
@@ -148,20 +148,20 @@ const createBoxPlotSvgElements = ({
                 height="${labelAttributes.textBoxHeight}px" 
                 fill="${plotConfig.color.fill}"
                 stroke="${plotConfig.color.border}" stroke-width="${0}"
-                onmouseenter="${highlightOnMouseOver(['#q3', '#q3TextBox'], ['#q3LinkLine'], plotConfig)}"
-                onmouseleave="${highlightOnMouseLeave(['#q3', '#q3TextBox'], ['#q3LinkLine'], plotConfig)}"
+                onmouseenter="${highlightOnMouseOver(plotId, ['#q3', '#q3TextBox'], ['#q3LinkLine'], plotConfig)}"
+                onmouseleave="${highlightOnMouseLeave(plotId, ['#q3', '#q3TextBox'], ['#q3LinkLine'], plotConfig)}"
             />
                 <text fill="${plotConfig.color.label}"
                     x="${plotConfig.text.padding}px" 
                     y="${labelAttributes.textLabelY}px" font-size="${plotConfig.text.size}px"
-                    onmouseenter="${highlightOnMouseOver(['#q3', '#q3TextBox'], ['#q3LinkLine'], plotConfig)}"
-                    onmouseleave="${highlightOnMouseLeave(['#q3', '#q3TextBox'], ['#q3LinkLine'], plotConfig)}"
+                    onmouseenter="${highlightOnMouseOver(plotId, ['#q3', '#q3TextBox'], ['#q3LinkLine'], plotConfig)}"
+                    onmouseleave="${highlightOnMouseLeave(plotId, ['#q3', '#q3TextBox'], ['#q3LinkLine'], plotConfig)}"
                 > 75th Percentile </text>
                 <text fill="${plotConfig.color.text}"
                     x="${plotConfig.text.padding}px" 
                     y="${labelAttributes.textValueY}px" font-size="${plotConfig.text.size}px"
-                    onmouseenter="${highlightOnMouseOver(['#q3', '#q3TextBox'], ['#q3LinkLine'], plotConfig)}"
-                    onmouseleave="${highlightOnMouseLeave(['#q3', '#q3TextBox'], ['#q3LinkLine'], plotConfig)}"
+                    onmouseenter="${highlightOnMouseOver(plotId, ['#q3', '#q3TextBox'], ['#q3LinkLine'], plotConfig)}"
+                    onmouseleave="${highlightOnMouseLeave(plotId, ['#q3', '#q3TextBox'], ['#q3LinkLine'], plotConfig)}"
                 > ${q3} </text>
         </svg>
     `);
@@ -176,20 +176,20 @@ const createBoxPlotSvgElements = ({
                 height="${labelAttributes.textBoxHeight}px" 
                 fill="${plotConfig.color.fill}"
                 stroke="${plotConfig.color.border}" stroke-width="${0}"
-                onmouseenter="${highlightOnMouseOver(['#q1', '#q1TextBox'], ['#q1LinkLine'], plotConfig)}"
-                onmouseleave="${highlightOnMouseLeave(['#q1', '#q1TextBox'], ['#q1LinkLine'], plotConfig)}"
+                onmouseenter="${highlightOnMouseOver(plotId, ['#q1', '#q1TextBox'], ['#q1LinkLine'], plotConfig)}"
+                onmouseleave="${highlightOnMouseLeave(plotId, ['#q1', '#q1TextBox'], ['#q1LinkLine'], plotConfig)}"
             />
                 <text fill="${plotConfig.color.label}"
                     x="${plotConfig.text.padding}px" 
                     y="${labelAttributes.textLabelY}px" font-size="${plotConfig.text.size}px"
-                    onmouseenter="${highlightOnMouseOver(['#q1', '#q1TextBox'], ['#q1LinkLine'], plotConfig)}"
-                    onmouseleave="${highlightOnMouseLeave(['#q1', '#q1TextBox'], ['#q1LinkLine'], plotConfig)}"
+                    onmouseenter="${highlightOnMouseOver(plotId, ['#q1', '#q1TextBox'], ['#q1LinkLine'], plotConfig)}"
+                    onmouseleave="${highlightOnMouseLeave(plotId, ['#q1', '#q1TextBox'], ['#q1LinkLine'], plotConfig)}"
                 > 25th Percentile </text>
                 <text fill="${plotConfig.color.text}"
                     x="${plotConfig.text.padding}px" 
                     y="${labelAttributes.textValueY}px" font-size="${plotConfig.text.size}px"
-                    onmouseenter="${highlightOnMouseOver(['#q1', '#q1TextBox'], ['#q1LinkLine'], plotConfig)}"
-                    onmouseleave="${highlightOnMouseLeave(['#q1', '#q1TextBox'], ['#q1LinkLine'], plotConfig)}"
+                    onmouseenter="${highlightOnMouseOver(plotId, ['#q1', '#q1TextBox'], ['#q1LinkLine'], plotConfig)}"
+                    onmouseleave="${highlightOnMouseLeave(plotId, ['#q1', '#q1TextBox'], ['#q1LinkLine'], plotConfig)}"
                 > ${q1} </text>
         </svg>
     `);
@@ -204,20 +204,20 @@ const createBoxPlotSvgElements = ({
                 height="${labelAttributes.textBoxHeight}px" 
                 fill="${plotConfig.color.fill}"
                 stroke="${plotConfig.color.border}" stroke-width="${0}"
-                onmouseenter="${highlightOnMouseOver(['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
-                onmouseleave="${highlightOnMouseLeave(['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
+                onmouseenter="${highlightOnMouseOver(plotId, ['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
+                onmouseleave="${highlightOnMouseLeave(plotId, ['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
             />
                 <text fill="${plotConfig.color.label}"
                     x="${plotConfig.text.padding}px" 
                     y="${labelAttributes.textLabelY}px" font-size="${plotConfig.text.size}px"
-                    onmouseenter="${highlightOnMouseOver(['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
-                    onmouseleave="${highlightOnMouseLeave(['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
+                    onmouseenter="${highlightOnMouseOver(plotId, ['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
+                    onmouseleave="${highlightOnMouseLeave(plotId, ['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
                 > Median </text>
                 <text fill="${plotConfig.color.text}"
                     x="${plotConfig.text.padding}px" 
                     y="${labelAttributes.textValueY}px" font-size="${plotConfig.text.size}px"
-                    onmouseenter="${highlightOnMouseOver(['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
-                    onmouseleave="${highlightOnMouseLeave(['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
+                    onmouseenter="${highlightOnMouseOver(plotId, ['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
+                    onmouseleave="${highlightOnMouseLeave(plotId, ['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
                 > ${median} </text>
         </svg>
     `);
@@ -232,20 +232,20 @@ const createBoxPlotSvgElements = ({
                 height="${labelAttributes.textBoxHeight}px" 
                 fill="${plotConfig.color.fill}"
                 stroke="${plotConfig.color.border}" stroke-width="${0}"
-                onmouseenter="${highlightOnMouseOver(['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
-                onmouseleave="${highlightOnMouseLeave(['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
+                onmouseenter="${highlightOnMouseOver(plotId, ['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
+                onmouseleave="${highlightOnMouseLeave(plotId, ['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
             />
                 <text fill="${plotConfig.color.label}"
                     x="${plotConfig.text.padding}px" 
                     y="${labelAttributes.textLabelY}px" font-size="${plotConfig.text.size}px"
-                    onmouseenter="${highlightOnMouseOver(['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
-                    onmouseleave="${highlightOnMouseLeave(['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
+                    onmouseenter="${highlightOnMouseOver(plotId, ['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
+                    onmouseleave="${highlightOnMouseLeave(plotId, ['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
                 > Min </text>
                 <text fill="${plotConfig.color.text}"
                     x="${plotConfig.text.padding}px" 
                     y="${labelAttributes.textValueY}px" font-size="${plotConfig.text.size}px"
-                    onmouseenter="${highlightOnMouseOver(['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
-                    onmouseleave="${highlightOnMouseLeave(['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
+                    onmouseenter="${highlightOnMouseOver(plotId, ['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
+                    onmouseleave="${highlightOnMouseLeave(plotId, ['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
                 > ${min} </text>
         </svg>
     `);
@@ -343,5 +343,5 @@ const getLabelAttributes = ({
 }
 
 module.exports = {
-    createBoxPlotSvgElements: createBoxPlotSvgElements
+    createBoxPlotSvgElements,
 };

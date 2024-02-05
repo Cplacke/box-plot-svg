@@ -19,7 +19,7 @@ const createBoxPlotSVG = ({
                 q1: q1.toString(), 
                 median: median.toString(), 
                 q3: q3.toString(), 
-            }, config) 
+            }, config, id) 
         }
         <script>${config.staticLabels ? '' : onLoadPositionLabels(id, config)}</script>
         </svg>
