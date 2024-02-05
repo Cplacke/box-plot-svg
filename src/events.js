@@ -76,7 +76,7 @@ const positionLabels = (plotId, plotConfig) => {
     });
 
     values.forEach((shiftedValue) => {
-        const { id, y } = shiftedValue;
+        const { elementId, y } = shiftedValue;
         window.document.querySelector(`#${plotId} #${elementId}`).setAttribute('y', y+'%');
         window.document.querySelector(`#${plotId} #${elementId.replace('LabelSvg', 'LinkLine')}`).setAttribute('y2', y+(0.5*labelBoxPercentage)+'%');
     });
@@ -89,6 +89,7 @@ const onLoadPositionLabels = (plotId, plotConfig) => (`
             .replace(/&/g, "&amp;")
             .replace(/</g, "&lt;")
             .replace(/>/g, "&gt;")
+            .replace("plotConfig = mergeConfig(plotConfig);", "")
     };
     position('${plotId}', ${JSON.stringify(plotConfig)});
 `);
