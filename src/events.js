@@ -1,3 +1,5 @@
+const { mergeConfig } = require("./utils");
+
 const highlightOnMouseOver = (fillTags, showTags, plotConfig) => { 
     return `
         window.document.querySelectorAll('${fillTags.join(',')}')
@@ -23,10 +25,11 @@ const highlightOnMouseLeave = (fillTags, showTags, plotConfig) => {
     `.replace(/\s*/g, '');
 }
 
-const positionLabels = (id, plotConfig) => {
-    var boxPlotSVG = window.document.querySelector(`#${id}`);
-    var labelSVGs = window.document.querySelectorAll(`#${id} .label-box`);
-    var textBoxRect = window.document.querySelector(`#${id} .label-box rect`);
+const positionLabels = (plotId, plotConfig) => {
+    plotConfig = mergeConfig(plotConfig);
+    var boxPlotSVG = window.document.querySelector(`#${plotId}`);
+    var labelSVGs = window.document.querySelectorAll(`#${plotId} .label-box`);
+    var textBoxRect = window.document.querySelector(`#${plotId} .label-box rect`);
 
     var labelBoxPercentage = (textBoxRect.height.baseVal.value/boxPlotSVG.getBBox().height)*100;
 
@@ -41,13 +44,13 @@ const positionLabels = (id, plotConfig) => {
     var values = [];
     labelSVGs.forEach((element) => {
         values.push({ 
-            id: element.id, 
+            elementId: element.id, 
             y: Number(element.getAttribute('y').toString().replace('%', ''))
         });
     });
 
     values.forEach((ele) => {
-        if (!/min|max/.test(ele.id)) {
+        if (!/min|max/.test(ele.elementId)) {
             ele.y = ele.y - (0.5*labelBoxPercentage);
         }
     });
@@ -56,7 +59,7 @@ const positionLabels = (id, plotConfig) => {
     values.forEach((curr, i) => {
         if (i < values.length-2) {
             const next = values[i+1];
-            if (curr.y+labelBoxPercentage > next.y && !/min|max/.test(next.id)) {
+            if (curr.y+labelBoxPercentage > next.y && !/min|max/.test(next.elementId)) {
                 next.y = curr.y+labelBoxPercentage;
             }
         }
@@ -66,7 +69,7 @@ const positionLabels = (id, plotConfig) => {
     values.forEach((curr, i) => {
         if (i < values.length-2) {
             const next = values[i+1];
-            if (next.y+labelBoxPercentage > curr.y && !/min|max/.test(next.id)) {
+            if (next.y+labelBoxPercentage > curr.y && !/min|max/.test(next.elementId)) {
                 next.y = curr.y-labelBoxPercentage;
             }
         }
@@ -74,20 +77,20 @@ const positionLabels = (id, plotConfig) => {
 
     values.forEach((shiftedValue) => {
         const { id, y } = shiftedValue;
-        window.document.querySelector('#'+id).setAttribute('y', y+'%');
-        window.document.querySelector('#'+id.replace('LabelSvg', 'LinkLine')).setAttribute('y2', y+(0.5*labelBoxPercentage)+'%');
+        window.document.querySelector(`#${plotId} #${elementId}`).setAttribute('y', y+'%');
+        window.document.querySelector(`#${plotId} #${elementId.replace('LabelSvg', 'LinkLine')}`).setAttribute('y2', y+(0.5*labelBoxPercentage)+'%');
     });
     console.debug('box-plot-svg::onLoadPositionLabels::complete');
 }
 
-const onLoadPositionLabels = (id, plotConfig) => (`
+const onLoadPositionLabels = (plotId, plotConfig) => (`
     const position = ${
         positionLabels.toString()
             .replace(/&/g, "&amp;")
             .replace(/</g, "&lt;")
             .replace(/>/g, "&gt;")
     };
-    position('${id}', ${JSON.stringify(plotConfig)});
+    position('${plotId}', ${JSON.stringify(plotConfig)});
 `);
 
 module.exports = {
