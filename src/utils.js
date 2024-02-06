@@ -21,11 +21,11 @@ const defaultConfig = {
     padding: 2.5,
     boxWidth: 12.5,
     boxInset: 2,
-    style: '',
+    style: 'height: 100%;',
     text: {
         size: 12,
         padding: 5,
-        radius: 2,
+        radius: 0,
         font: 'OptumSans, helvetica, sans-serif, monospace',
     },
     stroke: {

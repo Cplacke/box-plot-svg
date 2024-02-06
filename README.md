@@ -46,7 +46,7 @@ const defaultConfig = {
     padding: 2.5, // percentage
     boxWidth: 12.5, // percentage
     boxInset: 2, // percentage
-    style: '', // css rule(s)
+    style: 'height: 100%;', // css rule(s)
     text: {
         size: 12, // pixels
         padding: 1, // pixels
