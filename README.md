@@ -6,8 +6,7 @@ For best results the values are placed dynamically based on the data summary val
 ## Examples
 Below are a few SVG box plots that were generated from `test.spec.js` to refer to generation sample code
 
-<img src="./samples/box-plot-example.svg">
-<img src="./samples/box-plot-test-scores.svg">
+<img src="./samples/screenshot-box-plot.png">
 
 
 ## Quick Start

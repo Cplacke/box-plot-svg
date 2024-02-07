@@ -78,6 +78,13 @@ const boxPloy90s = createBoxPlotSVG({
     q1: 79,
     median: 80,
 })
+const boxCompMatch = createBoxPlotSVG({
+    max: 69.94350000500040000,
+    min: 6.245628,
+    q3: 34.75000,
+    q1: 23.645500050,
+    median: 29.000000000100,
+})
 
 fs.writeFileSync(
     './samples/boxPlotExample.svg',
@@ -119,6 +126,10 @@ fs.writeFileSync(
     './samples/boxPloy90s.svg',
     boxPloy90s
 );
+fs.writeFileSync(
+    './samples/boxCompMatch.svg',
+    boxPloy90s
+);
 
 const all = [
     // boxPlotExample,
@@ -129,7 +140,8 @@ const all = [
     boxPlotLowStack,
     boxPlotHighStack,
     boxPlotMidRange,
-    boxPloy90s
+    boxPloy90s,
+    boxCompMatch
 ]
 fs.writeFileSync(
     './samples/box-plot-all.html',

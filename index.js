@@ -9,7 +9,7 @@ const createBoxPlotSVG = ({
     const id = `boxPlot-${Date.now()}-${Math.floor(Math.random()*1000)}`;
     config = mergeConfig(config);
     const svg = `
-        <svg id="${id}" viewBox="100% 100%" xmlns="http://www.w3.org/2000/svg" 
+        <svg id="${id}" xmlns="http://www.w3.org/2000/svg" 
             style="background-color: transparent; font-family: ${config.text.font}; ${config.style}"
         > 
         ${ 

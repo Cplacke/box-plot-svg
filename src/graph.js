@@ -20,16 +20,16 @@ const createBoxPlotSvgElements = ({
 
     // link lines on hover state
     plotElements.push(`
-        <line id="maxLinkLine" display="none" class="link-link"
+        <line id="maxLinkLine" class="link-link"
             x1="${boxPlotCenterX+plotConfig.boxInset}%" y1="${plotAttributes.max.y}%" 
-            x2="${labelAttributes.textContainerX}%" y2="${labelAttributes.max.y+1}%"
+            x2="${labelAttributes.textContainerX}%" y2="${labelAttributes.max.y}%"
             stroke="${plotConfig.color.lineHover}" stroke-width="${plotConfig.stroke.line}"
         />
     `)
     plotElements.push(`
         <line id="q3LinkLine" display="none" class="link-link"
-            x1="${boxPlotCenterX+(0.5*plotConfig.boxWidth)}%" y1="${plotAttributes.q3.y+(0.5*plotAttributes.q3.h)}%" 
-            x2="${labelAttributes.textContainerX}%" y2="${labelAttributes.q3.y+1}%"
+            x1="${boxPlotCenterX+(0.5*plotConfig.boxWidth)}%" y1="${plotAttributes.q3.y+(plotConfig.inverted ? 0 : plotAttributes.q3.h)}%" 
+            x2="${labelAttributes.textContainerX}%" y2="${labelAttributes.q3.y}%"
             stroke="${plotConfig.color.lineHover}" stroke-width="${plotConfig.stroke.line}"
         />
     `)
@@ -37,21 +37,21 @@ const createBoxPlotSvgElements = ({
     plotElements.push(`
         <line id="medianLinkLine" display="none" class="link-link"
             x1="${boxPlotCenterX+(0.5*plotConfig.boxWidth)+plotConfig.boxInset}%" y1="${plotAttributes.median.y}%" 
-            x2="${labelAttributes.textContainerX}%" y2="${labelAttributes.median.y+1}%"
+            x2="${labelAttributes.textContainerX}%" y2="${labelAttributes.median.y}%"
             stroke="${plotConfig.color.lineHover}" stroke-width="${plotConfig.stroke.line}"
         />
     `)
     plotElements.push(`
         <line id="q1LinkLine" display="none" class="link-link"
-            x1="${boxPlotCenterX+(0.5*plotConfig.boxWidth)}%" y1="${plotAttributes.q1.y+(0.5*plotAttributes.q1.h)}%" 
-            x2="${labelAttributes.textContainerX}%" y2="${labelAttributes.q1.y+1}%"
+            x1="${boxPlotCenterX+(0.5*plotConfig.boxWidth)}%" y1="${plotAttributes.q1.y+(plotConfig.inverted ? plotAttributes.q1.h : 0)}%" 
+            x2="${labelAttributes.textContainerX}%" y2="${labelAttributes.q1.y}%"
             stroke="${plotConfig.color.lineHover}" stroke-width="${plotConfig.stroke.line}"
         />
     `)
     plotElements.push(`
-        <line id="minLinkLine" display="none" class="link-link"
+        <line id="minLinkLine" class="link-link"
             x1="${boxPlotCenterX+plotConfig.boxInset}%" y1="${plotAttributes.min.y}%" 
-            x2="${labelAttributes.textContainerX}%" y2="${labelAttributes.min.y+1}%"
+            x2="${labelAttributes.textContainerX}%" y2="${labelAttributes.min.y}%"
             stroke="${plotConfig.color.lineHover}" stroke-width="${plotConfig.stroke.line}"
         />
     `)
@@ -83,7 +83,7 @@ const createBoxPlotSvgElements = ({
         <line id="median"
             x1="${plotConfig.padding}%" y1="${plotAttributes.median.y}%" 
             x2="${plotConfig.padding+plotConfig.boxWidth+(plotConfig.boxInset*2)}%" y2="${plotAttributes.median.y}%"
-            stroke="${plotConfig.color.line}" stroke-width="${plotConfig.stroke.line*1.5}"
+            stroke="${plotConfig.color.line}" stroke-width="${plotConfig.stroke.line}"
             onmouseenter="${highlightOnMouseOver(plotId, ['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
             onmouseleave="${highlightOnMouseLeave(plotId, ['#median', '#medianTextBox'], ['#medianLinkLine'], plotConfig)}"
         />
@@ -92,18 +92,18 @@ const createBoxPlotSvgElements = ({
         <line id="max"
             x1="${plotConfig.padding+(0.5*plotConfig.boxWidth)}%" y1="${plotAttributes.max.y}%" 
             x2="${plotConfig.padding+(0.5*plotConfig.boxWidth)+(plotConfig.boxInset*2)}%" y2="${plotAttributes.max.y}%"
-            stroke="${plotConfig.color.line}" stroke-width="${plotConfig.stroke.line*1.5}"
-            onmouseenter="${highlightOnMouseOver(plotId, ['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
-            onmouseleave="${highlightOnMouseLeave(plotId, ['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
+            stroke="${plotConfig.color.line}" stroke-width="${plotConfig.stroke.line}"
+            onmouseenter="${highlightOnMouseOver(plotId, ['#max', '#maxTextBox'], [], plotConfig)}"
+            onmouseleave="${highlightOnMouseLeave(plotId, ['#max', '#maxTextBox'], [], plotConfig)}"
         />
     `);
     plotElements.push(`
         <line id="min"
             x1="${plotConfig.padding+(0.5*plotConfig.boxWidth)}%" y1="${plotAttributes.min.y}%" 
             x2="${plotConfig.padding+(0.5*plotConfig.boxWidth)+(plotConfig.boxInset*2)}%" y2="${plotAttributes.min.y}%"
-            stroke="${plotConfig.color.line}" stroke-width="${plotConfig.stroke.line*1.5}"
-            onmouseenter="${highlightOnMouseOver(plotId, ['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
-            onmouseleave="${highlightOnMouseLeave(plotId, ['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
+            stroke="${plotConfig.color.line}" stroke-width="${plotConfig.stroke.line}"
+            onmouseenter="${highlightOnMouseOver(plotId, ['#min', '#minTextBox'], [], plotConfig)}"
+            onmouseleave="${highlightOnMouseLeave(plotId, ['#min', '#minTextBox'], [], plotConfig)}"
         />
     `);
     
@@ -119,20 +119,20 @@ const createBoxPlotSvgElements = ({
                 height="${labelAttributes.textBoxHeight}px" 
                 fill="${plotConfig.color.fill}"
                 stroke="${plotConfig.color.border}" stroke-width="${0}"
-                onmouseenter="${highlightOnMouseOver(plotId, ['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
-                onmouseleave="${highlightOnMouseLeave(plotId, ['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
+                onmouseenter="${highlightOnMouseOver(plotId, ['#max', '#maxTextBox'], [], plotConfig)}"
+                onmouseleave="${highlightOnMouseLeave(plotId, ['#max', '#maxTextBox'], [], plotConfig)}"
             />
                 <text fill="${plotConfig.color.label}"
                     x="${plotConfig.text.padding}px" 
                     y="${labelAttributes.textLabelY}px" font-size="${plotConfig.text.size}px"
-                    onmouseenter="${highlightOnMouseOver(plotId, ['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
-                    onmouseleave="${highlightOnMouseLeave(plotId, ['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
+                    onmouseenter="${highlightOnMouseOver(plotId, ['#max', '#maxTextBox'], [], plotConfig)}"
+                    onmouseleave="${highlightOnMouseLeave(plotId, ['#max', '#maxTextBox'], [], plotConfig)}"
                 > Max </text>
                 <text fill="${plotConfig.color.text}"
                 x="${plotConfig.text.padding}px" 
                 y="${labelAttributes.textValueY}px" font-size="${plotConfig.text.size}px"
-                    onmouseenter="${highlightOnMouseOver(plotId, ['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
-                    onmouseleave="${highlightOnMouseLeave(plotId, ['#max', '#maxTextBox'], ['#maxLinkLine'], plotConfig)}"
+                    onmouseenter="${highlightOnMouseOver(plotId, ['#max', '#maxTextBox'], [], plotConfig)}"
+                    onmouseleave="${highlightOnMouseLeave(plotId, ['#max', '#maxTextBox'], [], plotConfig)}"
                 > ${max} </text>
         </svg>
     `);
@@ -232,20 +232,20 @@ const createBoxPlotSvgElements = ({
                 height="${labelAttributes.textBoxHeight}px" 
                 fill="${plotConfig.color.fill}"
                 stroke="${plotConfig.color.border}" stroke-width="${0}"
-                onmouseenter="${highlightOnMouseOver(plotId, ['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
-                onmouseleave="${highlightOnMouseLeave(plotId, ['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
+                onmouseenter="${highlightOnMouseOver(plotId, ['#min', '#minTextBox'], [], plotConfig)}"
+                onmouseleave="${highlightOnMouseLeave(plotId, ['#min', '#minTextBox'], [], plotConfig)}"
             />
                 <text fill="${plotConfig.color.label}"
                     x="${plotConfig.text.padding}px" 
                     y="${labelAttributes.textLabelY}px" font-size="${plotConfig.text.size}px"
-                    onmouseenter="${highlightOnMouseOver(plotId, ['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
-                    onmouseleave="${highlightOnMouseLeave(plotId, ['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
+                    onmouseenter="${highlightOnMouseOver(plotId, ['#min', '#minTextBox'], [], plotConfig)}"
+                    onmouseleave="${highlightOnMouseLeave(plotId, ['#min', '#minTextBox'], [], plotConfig)}"
                 > Min </text>
                 <text fill="${plotConfig.color.text}"
                     x="${plotConfig.text.padding}px" 
                     y="${labelAttributes.textValueY}px" font-size="${plotConfig.text.size}px"
-                    onmouseenter="${highlightOnMouseOver(plotId, ['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
-                    onmouseleave="${highlightOnMouseLeave(plotId, ['#min', '#minTextBox'], ['#minLinkLine'], plotConfig)}"
+                    onmouseenter="${highlightOnMouseOver(plotId, ['#min', '#minTextBox'], [], plotConfig)}"
+                    onmouseleave="${highlightOnMouseLeave(plotId, ['#min', '#minTextBox'], [], plotConfig)}"
                 > ${min} </text>
         </svg>
     `);
@@ -322,14 +322,9 @@ const getLabelAttributes = ({
 
     labelConfig.min.y = min.y;
     labelConfig.max.y = max.y;
-    labelConfig.q1.y = q1.y+(0.5*q1.h);
+    labelConfig.q1.y = q1.y+(0.5*q3.h);
     labelConfig.median.y = median.y;
     labelConfig.q3.y = q3.y+(0.5*q3.h);
-
-    if (plotConfig.inverted) {
-        labelConfig.max.y = max.y;
-        labelConfig.min.y = min.y;
-    }
 
     if (plotConfig.staticLabels) {
         labelConfig.min.y = plotConfig.inverted ? 85 : 7;

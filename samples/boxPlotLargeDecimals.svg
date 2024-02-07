@@ -1,0 +1,338 @@
+
+        <svg id="boxPlot-1707323979385-340" xmlns="http://www.w3.org/2000/svg" 
+            style="background-color: transparent; font-family: OptumSans, helvetica, sans-serif, monospace; height: 100%;"
+        > 
+        
+        <line id="center-line"
+            x1="10.75%" y1="2.5%" 
+            x2="10.75%" y2="97.5%"
+            stroke="#002677" stroke-width="1.5"
+        />
+    ,
+        <line id="maxLinkLine" class="link-link"
+            x1="12.75%" y1="2.5%" 
+            x2="22%" y2="2.5%"
+            stroke="#002677" stroke-width="1.5"
+        />
+    ,
+        <line id="q3LinkLine" display="none" class="link-link"
+            x1="17%" y1="11.049999999904998%" 
+            x2="22%" y2="15.324999999905003%"
+            stroke="#002677" stroke-width="1.5"
+        />
+    ,
+        <line id="medianLinkLine" display="none" class="link-link"
+            x1="19%" y1="19.59999999990501%" 
+            x2="22%" y2="19.59999999990501%"
+            stroke="#002677" stroke-width="1.5"
+        />
+    ,
+        <line id="q1LinkLine" display="none" class="link-link"
+            x1="17%" y1="29.099999999904995%" 
+            x2="22%" y2="23.874999999905015%"
+            stroke="#002677" stroke-width="1.5"
+        />
+    ,
+        <line id="minLinkLine" class="link-link"
+            x1="12.75%" y1="97.5%" 
+            x2="22%" y2="97.5%"
+            stroke="#002677" stroke-width="1.5"
+        />
+    ,
+        <rect id="q3"
+            height="8.550000000000011%" width="12.5%"
+            x="4.5%" 
+            y="11.049999999904998%"
+            fill="#DFF3F7"
+            stroke="#002677" stroke-width="1.5"
+            onmouseenter="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q3,#boxPlot-1707323979385-340 #q3TextBox')            .forEach((element) => {                element.setAttribute('fill', '#D6EDF5');            });        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q3LinkLine')            .forEach((element) => {                element.setAttribute('display', '1');            });    "
+            onmouseleave="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q3,#boxPlot-1707323979385-340 #q3TextBox')            .forEach((element) => {                element.setAttribute('fill', '#DFF3F7');            });        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q3LinkLine')            .forEach((element) => {                element.setAttribute('display', 'none');            });    "
+        />
+    ,
+        <rect id="q1"
+            height="9.499999999999986%" width="12.5%"
+            x="4.5%" 
+            y="19.59999999990501%"
+            fill="#DFF3F7"
+            stroke="#002677" stroke-width="1.5"
+            onmouseenter="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q1,#boxPlot-1707323979385-340 #q1TextBox')            .forEach((element) => {                element.setAttribute('fill', '#D6EDF5');            });        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q1LinkLine')            .forEach((element) => {                element.setAttribute('display', '1');            });    "
+            onmouseleave="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q1,#boxPlot-1707323979385-340 #q1TextBox')            .forEach((element) => {                element.setAttribute('fill', '#DFF3F7');            });        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q1LinkLine')            .forEach((element) => {                element.setAttribute('display', 'none');            });    "
+        />
+    ,
+        <line id="median"
+            x1="2.5%" y1="19.59999999990501%" 
+            x2="19%" y2="19.59999999990501%"
+            stroke="#002677" stroke-width="1.5"
+            onmouseenter="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #median,#boxPlot-1707323979385-340 #medianTextBox')            .forEach((element) => {                element.setAttribute('fill', '#D6EDF5');            });        window.document.querySelectorAll('#boxPlot-1707323979385-340 #medianLinkLine')            .forEach((element) => {                element.setAttribute('display', '1');            });    "
+            onmouseleave="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #median,#boxPlot-1707323979385-340 #medianTextBox')            .forEach((element) => {                element.setAttribute('fill', '#DFF3F7');            });        window.document.querySelectorAll('#boxPlot-1707323979385-340 #medianLinkLine')            .forEach((element) => {                element.setAttribute('display', 'none');            });    "
+        />
+    ,
+        <line id="max"
+            x1="8.75%" y1="2.5%" 
+            x2="12.75%" y2="2.5%"
+            stroke="#002677" stroke-width="1.5"
+            onmouseenter="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #max,#boxPlot-1707323979385-340 #maxTextBox')            .forEach((element) => {                element.setAttribute('fill', '#D6EDF5');            });        window.document.querySelectorAll('no-action')            .forEach((element) => {                element.setAttribute('display', '1');            });    "
+            onmouseleave="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #max,#boxPlot-1707323979385-340 #maxTextBox')            .forEach((element) => {                element.setAttribute('fill', '#DFF3F7');            });        window.document.querySelectorAll('no-action')            .forEach((element) => {                element.setAttribute('display', 'none');            });    "
+        />
+    ,
+        <line id="min"
+            x1="8.75%" y1="97.5%" 
+            x2="12.75%" y2="97.5%"
+            stroke="#002677" stroke-width="1.5"
+            onmouseenter="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #min,#boxPlot-1707323979385-340 #minTextBox')            .forEach((element) => {                element.setAttribute('fill', '#D6EDF5');            });        window.document.querySelectorAll('no-action')            .forEach((element) => {                element.setAttribute('display', '1');            });    "
+            onmouseleave="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #min,#boxPlot-1707323979385-340 #minTextBox')            .forEach((element) => {                element.setAttribute('fill', '#DFF3F7');            });        window.document.querySelectorAll('no-action')            .forEach((element) => {                element.setAttribute('display', 'none');            });    "
+        />
+    ,
+        <svg class="label-box" id="maxLabelSvg"
+            x="22%" 
+            y="2.5%"
+        >
+            <rect id="maxTextBox"
+                rx="0"
+                width="75.5%"
+                height="34px" 
+                fill="#DFF3F7"
+                stroke="#002677" stroke-width="0"
+                onmouseenter="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #max,#boxPlot-1707323979385-340 #maxTextBox')            .forEach((element) => {                element.setAttribute('fill', '#D6EDF5');            });        window.document.querySelectorAll('no-action')            .forEach((element) => {                element.setAttribute('display', '1');            });    "
+                onmouseleave="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #max,#boxPlot-1707323979385-340 #maxTextBox')            .forEach((element) => {                element.setAttribute('fill', '#DFF3F7');            });        window.document.querySelectorAll('no-action')            .forEach((element) => {                element.setAttribute('display', 'none');            });    "
+            />
+                <text fill="#0C55B8"
+                    x="5px" 
+                    y="14.5px" font-size="12px"
+                    onmouseenter="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #max,#boxPlot-1707323979385-340 #maxTextBox')            .forEach((element) => {                element.setAttribute('fill', '#D6EDF5');            });        window.document.querySelectorAll('no-action')            .forEach((element) => {                element.setAttribute('display', '1');            });    "
+                    onmouseleave="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #max,#boxPlot-1707323979385-340 #maxTextBox')            .forEach((element) => {                element.setAttribute('fill', '#DFF3F7');            });        window.document.querySelectorAll('no-action')            .forEach((element) => {                element.setAttribute('display', 'none');            });    "
+                > Max </text>
+                <text fill="#323334"
+                x="5px" 
+                y="26.5px" font-size="12px"
+                    onmouseenter="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #max,#boxPlot-1707323979385-340 #maxTextBox')            .forEach((element) => {                element.setAttribute('fill', '#D6EDF5');            });        window.document.querySelectorAll('no-action')            .forEach((element) => {                element.setAttribute('display', '1');            });    "
+                    onmouseleave="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #max,#boxPlot-1707323979385-340 #maxTextBox')            .forEach((element) => {                element.setAttribute('fill', '#DFF3F7');            });        window.document.querySelectorAll('no-action')            .forEach((element) => {                element.setAttribute('display', 'none');            });    "
+                > 100 </text>
+        </svg>
+    ,
+        <svg class="label-box" id="q3LabelSvg"
+            x="22%" 
+            y="15.324999999905003%"
+        >
+            <rect id="q3TextBox"
+                rx="0"
+                width="75.5%"
+                height="34px" 
+                fill="#DFF3F7"
+                stroke="#002677" stroke-width="0"
+                onmouseenter="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q3,#boxPlot-1707323979385-340 #q3TextBox')            .forEach((element) => {                element.setAttribute('fill', '#D6EDF5');            });        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q3LinkLine')            .forEach((element) => {                element.setAttribute('display', '1');            });    "
+                onmouseleave="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q3,#boxPlot-1707323979385-340 #q3TextBox')            .forEach((element) => {                element.setAttribute('fill', '#DFF3F7');            });        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q3LinkLine')            .forEach((element) => {                element.setAttribute('display', 'none');            });    "
+            />
+                <text fill="#0C55B8"
+                    x="5px" 
+                    y="14.5px" font-size="12px"
+                    onmouseenter="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q3,#boxPlot-1707323979385-340 #q3TextBox')            .forEach((element) => {                element.setAttribute('fill', '#D6EDF5');            });        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q3LinkLine')            .forEach((element) => {                element.setAttribute('display', '1');            });    "
+                    onmouseleave="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q3,#boxPlot-1707323979385-340 #q3TextBox')            .forEach((element) => {                element.setAttribute('fill', '#DFF3F7');            });        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q3LinkLine')            .forEach((element) => {                element.setAttribute('display', 'none');            });    "
+                > 75th Percentile </text>
+                <text fill="#323334"
+                    x="5px" 
+                    y="26.5px" font-size="12px"
+                    onmouseenter="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q3,#boxPlot-1707323979385-340 #q3TextBox')            .forEach((element) => {                element.setAttribute('fill', '#D6EDF5');            });        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q3LinkLine')            .forEach((element) => {                element.setAttribute('display', '1');            });    "
+                    onmouseleave="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q3,#boxPlot-1707323979385-340 #q3TextBox')            .forEach((element) => {                element.setAttribute('fill', '#DFF3F7');            });        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q3LinkLine')            .forEach((element) => {                element.setAttribute('display', 'none');            });    "
+                > 91.0000000001 </text>
+        </svg>
+    ,
+        <svg class="label-box" id="q1LabelSvg"
+            x="22%" 
+            y="23.874999999905015%"
+        >
+            <rect id="q1TextBox"
+                rx="0"
+                width="75.5%"
+                height="34px" 
+                fill="#DFF3F7"
+                stroke="#002677" stroke-width="0"
+                onmouseenter="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q1,#boxPlot-1707323979385-340 #q1TextBox')            .forEach((element) => {                element.setAttribute('fill', '#D6EDF5');            });        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q1LinkLine')            .forEach((element) => {                element.setAttribute('display', '1');            });    "
+                onmouseleave="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q1,#boxPlot-1707323979385-340 #q1TextBox')            .forEach((element) => {                element.setAttribute('fill', '#DFF3F7');            });        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q1LinkLine')            .forEach((element) => {                element.setAttribute('display', 'none');            });    "
+            />
+                <text fill="#0C55B8"
+                    x="5px" 
+                    y="14.5px" font-size="12px"
+                    onmouseenter="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q1,#boxPlot-1707323979385-340 #q1TextBox')            .forEach((element) => {                element.setAttribute('fill', '#D6EDF5');            });        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q1LinkLine')            .forEach((element) => {                element.setAttribute('display', '1');            });    "
+                    onmouseleave="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q1,#boxPlot-1707323979385-340 #q1TextBox')            .forEach((element) => {                element.setAttribute('fill', '#DFF3F7');            });        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q1LinkLine')            .forEach((element) => {                element.setAttribute('display', 'none');            });    "
+                > 25th Percentile </text>
+                <text fill="#323334"
+                    x="5px" 
+                    y="26.5px" font-size="12px"
+                    onmouseenter="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q1,#boxPlot-1707323979385-340 #q1TextBox')            .forEach((element) => {                element.setAttribute('fill', '#D6EDF5');            });        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q1LinkLine')            .forEach((element) => {                element.setAttribute('display', '1');            });    "
+                    onmouseleave="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q1,#boxPlot-1707323979385-340 #q1TextBox')            .forEach((element) => {                element.setAttribute('fill', '#DFF3F7');            });        window.document.querySelectorAll('#boxPlot-1707323979385-340 #q1LinkLine')            .forEach((element) => {                element.setAttribute('display', 'none');            });    "
+                > 72.0000000001 </text>
+        </svg>
+    ,
+        <svg class="label-box" id="medianLabelSvg"
+            x="22%" 
+            y="19.59999999990501%"
+        >
+            <rect id="medianTextBox"
+                rx="0"
+                width="75.5%"
+                height="34px" 
+                fill="#DFF3F7"
+                stroke="#002677" stroke-width="0"
+                onmouseenter="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #median,#boxPlot-1707323979385-340 #medianTextBox')            .forEach((element) => {                element.setAttribute('fill', '#D6EDF5');            });        window.document.querySelectorAll('#boxPlot-1707323979385-340 #medianLinkLine')            .forEach((element) => {                element.setAttribute('display', '1');            });    "
+                onmouseleave="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #median,#boxPlot-1707323979385-340 #medianTextBox')            .forEach((element) => {                element.setAttribute('fill', '#DFF3F7');            });        window.document.querySelectorAll('#boxPlot-1707323979385-340 #medianLinkLine')            .forEach((element) => {                element.setAttribute('display', 'none');            });    "
+            />
+                <text fill="#0C55B8"
+                    x="5px" 
+                    y="14.5px" font-size="12px"
+                    onmouseenter="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #median,#boxPlot-1707323979385-340 #medianTextBox')            .forEach((element) => {                element.setAttribute('fill', '#D6EDF5');            });        window.document.querySelectorAll('#boxPlot-1707323979385-340 #medianLinkLine')            .forEach((element) => {                element.setAttribute('display', '1');            });    "
+                    onmouseleave="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #median,#boxPlot-1707323979385-340 #medianTextBox')            .forEach((element) => {                element.setAttribute('fill', '#DFF3F7');            });        window.document.querySelectorAll('#boxPlot-1707323979385-340 #medianLinkLine')            .forEach((element) => {                element.setAttribute('display', 'none');            });    "
+                > Median </text>
+                <text fill="#323334"
+                    x="5px" 
+                    y="26.5px" font-size="12px"
+                    onmouseenter="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #median,#boxPlot-1707323979385-340 #medianTextBox')            .forEach((element) => {                element.setAttribute('fill', '#D6EDF5');            });        window.document.querySelectorAll('#boxPlot-1707323979385-340 #medianLinkLine')            .forEach((element) => {                element.setAttribute('display', '1');            });    "
+                    onmouseleave="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #median,#boxPlot-1707323979385-340 #medianTextBox')            .forEach((element) => {                element.setAttribute('fill', '#DFF3F7');            });        window.document.querySelectorAll('#boxPlot-1707323979385-340 #medianLinkLine')            .forEach((element) => {                element.setAttribute('display', 'none');            });    "
+                > 82.0000000001 </text>
+        </svg>
+    ,
+        <svg class="label-box" id="minLabelSvg"
+            x="22%" 
+            y="97.5%"
+        >
+            <rect id="minTextBox"
+                rx="0"
+                width="75.5%"
+                height="34px" 
+                fill="#DFF3F7"
+                stroke="#002677" stroke-width="0"
+                onmouseenter="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #min,#boxPlot-1707323979385-340 #minTextBox')            .forEach((element) => {                element.setAttribute('fill', '#D6EDF5');            });        window.document.querySelectorAll('no-action')            .forEach((element) => {                element.setAttribute('display', '1');            });    "
+                onmouseleave="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #min,#boxPlot-1707323979385-340 #minTextBox')            .forEach((element) => {                element.setAttribute('fill', '#DFF3F7');            });        window.document.querySelectorAll('no-action')            .forEach((element) => {                element.setAttribute('display', 'none');            });    "
+            />
+                <text fill="#0C55B8"
+                    x="5px" 
+                    y="14.5px" font-size="12px"
+                    onmouseenter="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #min,#boxPlot-1707323979385-340 #minTextBox')            .forEach((element) => {                element.setAttribute('fill', '#D6EDF5');            });        window.document.querySelectorAll('no-action')            .forEach((element) => {                element.setAttribute('display', '1');            });    "
+                    onmouseleave="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #min,#boxPlot-1707323979385-340 #minTextBox')            .forEach((element) => {                element.setAttribute('fill', '#DFF3F7');            });        window.document.querySelectorAll('no-action')            .forEach((element) => {                element.setAttribute('display', 'none');            });    "
+                > Min </text>
+                <text fill="#323334"
+                    x="5px" 
+                    y="26.5px" font-size="12px"
+                    onmouseenter="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #min,#boxPlot-1707323979385-340 #minTextBox')            .forEach((element) => {                element.setAttribute('fill', '#D6EDF5');            });        window.document.querySelectorAll('no-action')            .forEach((element) => {                element.setAttribute('display', '1');            });    "
+                    onmouseleave="        window.document.querySelectorAll('#boxPlot-1707323979385-340 #min,#boxPlot-1707323979385-340 #minTextBox')            .forEach((element) => {                element.setAttribute('fill', '#DFF3F7');            });        window.document.querySelectorAll('no-action')            .forEach((element) => {                element.setAttribute('display', 'none');            });    "
+                > 0 </text>
+        </svg>
+    
+        <script>{
+    const position = (plotId, plotConfig) =&gt; {
+    
+    var boxPlotSVG = window.document.querySelector(`#${plotId}`);
+    var labelSVGs = window.document.querySelectorAll(`#${plotId} .label-box`);
+    var textBoxRect = window.document.querySelector(`#${plotId} .label-box rect`);
+
+    var labelBoxPercentage = (textBoxRect.height.baseVal.value/boxPlotSVG.getBBox().height)*100;
+
+    if (plotConfig.inverted == true) {
+        window.document.querySelector(`#${plotId} #maxLabelSvg`).setAttribute('y', `${plotConfig.padding-1}%`);
+        window.document.querySelector(`#${plotId} #minLabelSvg`).setAttribute('y', `${100-plotConfig.padding-labelBoxPercentage}%`);
+    } else {
+        window.document.querySelector(`#${plotId} #maxLabelSvg`).setAttribute('y', `${100-plotConfig.padding-labelBoxPercentage}%`);
+        window.document.querySelector(`#${plotId} #minLabelSvg`).setAttribute('y', `${plotConfig.padding-1}%`);
+    }
+
+    var values = [];
+    labelSVGs.forEach((element) =&gt; {
+        values.push({ 
+            elementId: element.id, 
+            y: Number(element.getAttribute('y').toString().replace('%', ''))
+        });
+    });
+    var medianY; 
+    values.forEach((ele) =&gt; {
+        if (/median/.test(ele.elementId)) {
+            ele.y = ele.y - (0.5*labelBoxPercentage);
+            medianY = ele.y;
+        }
+    })
+    values.forEach((ele) =&gt; {
+        if (/q1/.test(ele.elementId)) {
+            ele.y = Number(medianY + labelBoxPercentage);
+        }
+        if (/q3/.test(ele.elementId)) {
+            ele.y = Number(medianY - labelBoxPercentage);
+        }
+        // if (!/min|max/.test(ele.elementId)) {
+        // }
+    });
+    
+    values.sort((a, b) =&gt; {
+        if (/max/.test(a.elementId)) {
+            return -1;
+        }
+        return a.y - b.y;
+    });
+    values.forEach((curr, i) =&gt; {
+        if (i &lt; values.length-2) {
+            const next = values[i+1];
+            if (curr.y+labelBoxPercentage &gt;= next.y &amp;&amp; !/min|max/.test(next.elementId)) {
+                next.y = curr.y+labelBoxPercentage;
+            }
+        }
+    });
+    values.sort((a, b) =&gt; {
+        if (/max/.test(a.elementId)) {
+            return -1;
+        }
+        return a.y - b.y;
+    });
+    values.forEach((curr, i) =&gt; {
+        if (i &lt; values.length-2) {
+            const next = values[i+1];
+            if (curr.y+labelBoxPercentage &gt;= next.y &amp;&amp; !/min|max/.test(next.elementId)) {
+                next.y = curr.y+labelBoxPercentage;
+            }
+        }
+    });
+    
+    values.sort((a, b) =&gt; {
+        if (/min/.test(a.elementId)) {
+            return -1;
+        }
+        return b.y - a.y
+    });
+    values.forEach((curr, i) =&gt; {
+        if (i &lt; values.length-2) {
+            const next = values[i+1];
+            if (next.y+labelBoxPercentage &gt;= curr.y &amp;&amp; !/min|max/.test(next.elementId)) {
+                next.y = curr.y-labelBoxPercentage;
+            }
+        }
+    });
+    values.sort((a, b) =&gt; {
+        if (/min/.test(a.elementId)) {
+            return -1;
+        }
+        return b.y - a.y
+    });
+    values.forEach((curr, i) =&gt; {
+        if (i &lt; values.length-2) {
+            const next = values[i+1];
+            if (next.y+labelBoxPercentage &gt;= curr.y &amp;&amp; !/min|max/.test(next.elementId)) {
+                next.y = curr.y-labelBoxPercentage;
+            }
+        }
+    });
+
+    values.forEach((shiftedValue) =&gt; {
+        const { elementId, y } = shiftedValue;
+        window.document.querySelector(`#${plotId} #${elementId}`).setAttribute('y', y+'%');
+        window.document.querySelector(`#${plotId} #${elementId.replace('LabelSvg', 'LinkLine')}`).setAttribute('y2', y+(0.5*labelBoxPercentage)+'%');
+        if (/min/.test(elementId)) {
+            window.document.querySelector(`#${plotId} #${elementId}`).setAttribute('y', y+'%');
+            window.document.querySelector(`#${plotId} #${elementId.replace('LabelSvg', 'LinkLine')}`).setAttribute('y2', y+labelBoxPercentage+'%');
+        } 
+        if(/max/.test(elementId)) {
+            window.document.querySelector(`#${plotId} #${elementId.replace('LabelSvg', 'LinkLine')}`).setAttribute('y2', y+1+'%');
+        }
+    });
+    console.debug('box-plot-svg::onLoadPositionLabels::complete');
+};
+    position('boxPlot-1707323979385-340', {"padding":2.5,"boxWidth":12.5,"boxInset":2,"style":"height: 100%;","text":{"size":12,"padding":5,"radius":0,"font":"OptumSans, helvetica, sans-serif, monospace"},"stroke":{"box":1.5,"line":1.5},"color":{"fill":"#DFF3F7","line":"#002677","border":"#002677","label":"#0C55B8","fillHover":"#D6EDF5","lineHover":"#002677","text":"#323334"},"inverted":true,"staticLabels":false});
+}</script>
+        </svg>
+    
